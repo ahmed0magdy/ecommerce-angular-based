@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from '../Services/services.service';
 
 @Component({
@@ -13,8 +14,15 @@ export class AddProductsComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  AddProd(title:any,image:any,price:any,details:any){
-    this.myService.AddProd({title:title, image: image, price:price,details:details}).subscribe();
+  AddProductForm = new FormGroup({
+    title: new FormControl(""),
+    image:new FormControl(""),
+    price: new FormControl(0),
+    details: new FormControl("")
+  })
+  AddProd(){
+    this.myService.AddProd(this.AddProductForm.value).subscribe();
+    alert("product is added")
     window.location.href = "/"
   }
 

@@ -1,11 +1,11 @@
 {
   "products": [
     {
-      "id": 1,
       "title": "product 1",
       "image": "nasa.jpg",
-      "price": 250,
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem."
+      "price": "444",
+      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem.",
+      "id": 1
     },
     {
       "id": 2,
@@ -29,13 +29,6 @@
       "id": 4
     },
     {
-      "title": "product5",
-      "image": "nasa.jpg",
-      "price": "600",
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem.",
-      "id": 5
-    },
-    {
       "title": "product 6",
       "image": "nasa.jpg",
       "price": "1000",
@@ -43,18 +36,11 @@
       "id": 6
     },
     {
-      "title": "product 7",
-      "image": "addidas-short.jpeg",
-      "price": "220",
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem.\t",
-      "id": 7
-    },
-    {
-      "title": "Product 9",
+      "title": "product 10",
       "image": "nasa.jpg",
-      "price": "355",
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem.\t",
-      "id": 8
+      "price": "999",
+      "details": "ksdja kdjksajdksa jdksadlksasa",
+      "id": 7
     }
   ]
 }

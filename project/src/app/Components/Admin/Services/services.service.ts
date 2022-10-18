@@ -14,6 +14,9 @@ private url  = "http://localhost:3000/products"
 getAllProducts(){
   return this.myClient.get(this.url)
 }
+getById(id:number){
+  return this.myClient.get(`${this.url}/${id}`)
+}
 AddProd(newProduct:any){
   return this.myClient.post(this.url,newProduct)
 }

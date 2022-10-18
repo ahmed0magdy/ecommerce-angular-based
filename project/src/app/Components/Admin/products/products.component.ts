@@ -22,6 +22,14 @@ export class ProductsComponent implements OnInit {
         }
       }
     )
+
+  }
+  DeleteProd(prod_id:any){
+    console.log(prod_id);
+    this.myService.Deleteprod(prod_id).subscribe((data)=>{
+      console.log(data);
+      window.location.href = "/";
+    })
   }
 
 

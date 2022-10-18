@@ -10,6 +10,8 @@ import { ErrorComponent } from './Components/Admin/error/error.component';
 import { ServicesService } from './Components/Admin/Services/services.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateProductsComponent } from './Components/Admin/update-products/update-products.component';
+import { DeleteProductsComponent } from './Components/Admin/delete-products/delete-products.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     AddProductsComponent,
     ErrorComponent,
+    UpdateProductsComponent,
+    DeleteProductsComponent,
   ],
   imports: [
     BrowserModule,
