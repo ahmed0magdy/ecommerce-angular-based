@@ -34,13 +34,6 @@
       "price": "1000",
       "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem.",
       "id": 6
-    },
-    {
-      "title": "product 10",
-      "image": "nasa.jpg",
-      "price": "999",
-      "details": "ksdja kdjksajdksa jdksadlksasa",
-      "id": 7
     }
   ]
 }

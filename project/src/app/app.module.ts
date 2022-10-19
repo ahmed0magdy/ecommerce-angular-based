@@ -11,7 +11,7 @@ import { ServicesService } from './Components/Admin/Services/services.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductsComponent } from './Components/Admin/update-products/update-products.component';
-import { DeleteProductsComponent } from './Components/Admin/delete-products/delete-products.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +21,6 @@ import { DeleteProductsComponent } from './Components/Admin/delete-products/dele
     AddProductsComponent,
     ErrorComponent,
     UpdateProductsComponent,
-    DeleteProductsComponent,
   ],
   imports: [
     BrowserModule,
