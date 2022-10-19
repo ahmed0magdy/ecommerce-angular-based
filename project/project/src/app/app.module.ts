@@ -12,10 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductsComponent } from './Components/Admin/update-products/update-products.component';
 import { DeleteProductsComponent } from './Components/Admin/delete-products/delete-products.component';
-import { LoginComponent } from './userComponents/login/login.component';
-import { SignupComponent } from './userComponents/signup/signup.component';
-import { UsersService } from './services/users.service';
-
 
 @NgModule({
   declarations: [
@@ -26,8 +22,6 @@ import { UsersService } from './services/users.service';
     ErrorComponent,
     UpdateProductsComponent,
     DeleteProductsComponent,
-    LoginComponent,
-    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +31,7 @@ import { UsersService } from './services/users.service';
     ReactiveFormsModule
   ],
   providers: [
-    ServicesService,
-    UsersService
+    ServicesService
   ],
   bootstrap: [AppComponent]
 })

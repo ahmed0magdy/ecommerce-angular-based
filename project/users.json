@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "ahmed",
+      "email": "ahmed@gmail.com",
+      "gender": "male",
+      "password": 12345645
+    },
+    {
+      "id": 2,
+      "name": "aly",
+      "email": "aly@gmail.com",
+      "password": 23645987,
+      "gender": "male"
+    },
+    {
+      "id": 3,
+      "name": "Hagar",
+      "email": "Hagar@gmail.com",
+      "password": 23663587,
+      "gender": "female"
+    },
+    {
+      "name": "helmy",
+      "email": "helmy@gmail.com",
+      "password": "365489752",
+      "gender": "male",
+      "id": 4
+    }
+  ]
+}
