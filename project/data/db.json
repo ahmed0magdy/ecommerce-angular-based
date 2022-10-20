@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "title": "product 1",
-      "image": "nasa.jpg",
-      "price": "444",
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem.",
-      "id": 1
-    },
-    {
       "id": 2,
       "title": "product 2",
       "image": "bersheka.jpg",
@@ -41,6 +34,13 @@
       "price": "999",
       "details": "ksdja kdjksajdksa jdksadlksasa",
       "id": 7
+    },
+    {
+      "title": "mynewtitle",
+      "image": "nasa.jpg",
+      "price": "155",
+      "details": "something something",
+      "id": 8
     }
   ]
 }
