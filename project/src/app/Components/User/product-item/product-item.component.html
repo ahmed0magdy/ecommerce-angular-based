@@ -1,0 +1,41 @@
+
+
+ <!-- <section id="products">
+    <div class="container ">
+    <div class="row col-4 " > -->
+
+<div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 " >
+    <div class="card" >
+        <a routerLink="product/{{product.id}}">
+            <img class="card-img-top" src="assets/images/{{product.image}}">
+
+    </a>
+        <div class="card-body">
+            <h5><b>{{product.title}}</b> </h5>
+            <div class="d-flex flex-row my-2">
+                <div class="text-muted">{{product.price}}</div>
+                <div class="ml-auto">
+                    <button class="border rounded bg-white sign"><span class="fa fa-plus" id="orange"></span></button>
+                    <!-- <span class="px-sm-1">0</span> -->
+                    <input type="number" class="w-25" [(ngModel)]="quantity">
+                    <button class="border rounded bg-white sign"><span class="fa fa-minus" id="orange"></span></button>
+                </div>
+            </div>
+            <button class="btn w-100 rounded my-2" (click)="Addtocart()">Add to cart</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- </div>
+</div>
+</section> -->

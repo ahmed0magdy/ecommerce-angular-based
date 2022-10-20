@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
     console.log(prod_id);
     this.myService.Deleteprod(prod_id).subscribe((data)=>{
       console.log(data);
-      window.location.href = "/";
+      window.location.href = "/admin";
     })
   }
 

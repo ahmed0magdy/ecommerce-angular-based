@@ -37,7 +37,7 @@ export class UpdateProductsComponent implements OnInit {
     console.log(this.UpdateProductForm.value);
     this.myService.UpdateProd(this.UpdateProductForm.value,this.route.snapshot.params['id']).subscribe((data)=>{
       console.log(data);
-      window.location.href="/";
+      window.location.href="/admin";
     })
   }
 }
