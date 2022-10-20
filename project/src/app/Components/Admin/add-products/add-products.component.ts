@@ -23,7 +23,7 @@ export class AddProductsComponent implements OnInit {
   AddProd(){
     this.myService.AddProd(this.AddProductForm.value).subscribe();
     alert("product is added")
-    window.location.href = "/"
+    window.location.href = "/admin"
   }
 
 
