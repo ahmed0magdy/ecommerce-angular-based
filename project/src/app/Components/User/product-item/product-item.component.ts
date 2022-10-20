@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-product-item',

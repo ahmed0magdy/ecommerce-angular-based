@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
+import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,23 @@ import { UsersService } from '../users.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private myserv:UsersService) { }
+  constructor(private myserv:ServicesService) { }
 
  products:any[]=[];
  productsInCart:any[]=[]
- 
+ users:any[]=[];
+
   ngOnInit(): void {
      this.getdata();
+    //  this.getuser()
   }
+
+  // getuser()
+  // {
+  //   this.myserv.getAllUsers().subscribe(
+  //     (data:any)=>this.users =data
+  //   )
+  // }
 
   getdata()
   {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsersService } from '../users.service';
+import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,7 +11,7 @@ export class ProductDetailsComponent implements OnInit {
 
   singleProduct:any;
   id:any;
-  constructor(private myserv:UsersService ,private myactivrout:ActivatedRoute) 
+  constructor(private myserv:ServicesService ,private myactivrout:ActivatedRoute) 
   {
     this.id=myactivrout.snapshot.params['id'];
      this.myserv.getById(this.id).subscribe(

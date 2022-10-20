@@ -8,11 +8,21 @@
       "id": 7
     },
     {
-      "title": "mynewtitle",
+      "title": "mynewproduct",
       "image": "nasa.jpg",
-      "price": "155",
-      "details": "something something",
+      "price": "500",
+      "details": "aslfjsldfjlsdfjlsdjflskdfj",
       "id": 8
+    }
+  ],
+  "users": [
+    {
+      "username": "sayed",
+      "password": "123456",
+      "email": "sayed@gmail.com",
+      "address": "something something",
+      "phone": 123,
+      "userid": 1
     }
   ]
 }
