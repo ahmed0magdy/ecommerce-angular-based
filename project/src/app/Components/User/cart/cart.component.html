@@ -4,7 +4,8 @@
             <div class="title">
                 <div class="row">
                     <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+                    <div class="col align-self-center text-right text-muted">{{productsInCart.length}} items</div>
+                    <button class="btn btn-danger w-25" (click)="clearCart()">Clear Cart Items</button>
                 </div>
             </div>   
 
@@ -16,14 +17,15 @@
                         <div class="row">Cotton T-shirt</div>
                     </div>
                     <div class="col">
-                        <button class="btn btn-dark w-25 rounded" (click)="minus(index)">-</button>
+                        <button class="btn btn-warning w-25 rounded" (click)="minus(index)">-</button>
                             <input type="number" class="w-50" (change)="detectChange()" [(ngModel)]="item.quanity" min="1">
                             <!-- {{item.quanity}} -->
-                        <button class="btn btn-dark w-25 rounded" (click)="plus(index)">+</button>
+                        <button class="btn btn-warning w-25 rounded" (click)="plus(index)">+</button>
 
                     </div>
                     <div class="col">&euro; {{item.price *item.quanity}}
-                      <span class="close">&#10005;</span></div>
+                      <button class="btn btn-danger rounded w-25" (click)="deleteItem(index)" >x</button>
+                    </div>
                 </div>
             </div>
 
@@ -59,7 +61,7 @@
 
 
 
-            <div class="back-to-shop"><a routerLink="/">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            <div class="back-to-shop"><button routerLink="/" class="text-muted btn btn-info">&leftarrow; Back to shop</button></div>
         </div>
 
 
@@ -81,7 +83,7 @@
                 <div class="col">TOTAL PRICE</div>
                 <div class="col text-right">&euro; <input type="text" disabled [(ngModel)]="total"></div>
             </div>
-            <button class="btn">CHECKOUT</button>
+            <button class="btn btn-dark"(click)="checkOut()">CHECKOUT</button>
         </div>
     </div>
     

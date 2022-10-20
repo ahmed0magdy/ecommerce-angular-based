@@ -58,4 +58,38 @@ export class CartComponent implements OnInit {
 
 
   }
+
+  deleteItem(index:any)
+  {
+    this.productsInCart.splice(index,1);
+    this.getTotal()
+
+    localStorage.setItem("cart",JSON.stringify(this.productsInCart))
+
+  }
+
+  clearCart()
+  {
+    this.productsInCart=[];
+    this.getTotal()
+    localStorage.setItem("cart",JSON.stringify(this.productsInCart))
+
+  }
+
+  checkOut()
+  {
+    let order = this.productsInCart.map(item=>{
+      return {productId:item.id,quantity:item.quanity}
+    })
+
+    let finalData=
+    {
+      userId:3,
+      date: new Date(),
+      order:order
+    }
+    console.log(finalData)
+    alert('your order has been completed!')
+    window.location.href='/'
+  }
 }
