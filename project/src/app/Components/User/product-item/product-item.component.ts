@@ -9,13 +9,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
   constructor() { }
-   quantity:number=0;
+   quantity:number=1;
    @Input() product:any={};
    @Output() item=new EventEmitter()
     ngOnInit(): void {
    
   }
 
+  plus()
+  {
+    this.quantity++;
+  }
+  minus()
+  {
+    this.quantity--;
+  }
   Addtocart()
   {
     this.product.quanity=this.quantity;
