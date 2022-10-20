@@ -1,0 +1,20 @@
+
+ <section id="products">
+    <div class="container " *ngFor="let product of products">
+            <div class="row col-4 " >
+            <app-product-item [product]="product" (item)="addtocart($event)"></app-product-item>
+
+    </div>
+</div>
+</section> 
+
+
+
+
+
+
+
+
+
+
+
