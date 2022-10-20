@@ -3,12 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [
-    AppComponent
-=======
 import { HeaderComponent } from './Components/Admin/header/header.component';
 import { ProductsComponent } from './Components/Admin/products/products.component';
 import { AddProductsComponent } from './Components/Admin/add-products/add-products.component';
@@ -41,7 +35,6 @@ import { ProductItemComponent } from './Components/User/product-item/product-ite
     NavComponent,
     ProductItemComponent,
     
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

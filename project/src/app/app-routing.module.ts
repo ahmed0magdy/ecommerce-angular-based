@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-<<<<<<< Updated upstream
-
-const routes: Routes = [];
-=======
 import { AddProductsComponent } from './Components/Admin/add-products/add-products.component';
 import { ErrorComponent } from './Components/Admin/error/error.component';
 import { ProductsComponent } from './Components/Admin/products/products.component';
@@ -46,7 +42,6 @@ const routes: Routes = [
     component:ErrorComponent
   },
 ];
->>>>>>> Stashed changes
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
