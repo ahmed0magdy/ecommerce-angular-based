@@ -11,12 +11,6 @@ export class ServicesService {
 
 private url  = "http://localhost:3000/products"
 
-// private userurl  = "http://localhost:3000/users"
-
-// getAllUsers(){
-//   return this.myClient.get(this.userurl)
-// }
-
 getAllProducts(){
   return this.myClient.get(this.url)
 }
