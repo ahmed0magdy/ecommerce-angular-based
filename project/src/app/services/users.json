@@ -1,4 +1,21 @@
 {
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
   "users": [
     {
       "id": 1,
@@ -57,13 +74,6 @@
       "email": "aly@gmail.com",
       "password": " 23645987",
       "id": 10
-    },
-    {
-      "name": null,
-      "email": null,
-      "password": null,
-      "gender": null,
-      "id": 11
     }
-  ]
+   ]
 }

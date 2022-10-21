@@ -32,9 +32,12 @@ export class LoginComponent implements OnInit {
         });
         if(user)
         {
-          alert('you are successfully login');
-          this.login.reset();
+          let userEmail= this.login.value.email;
+          alert('you are successfully login' + userEmail);
+          sessionStorage.setItem("userEmail",userEmail) // key of unique user email 
+          console.log(userEmail);
           this._route.navigate(['']);//rout home page ??????????????????????
+          this.login.reset();
         }
         else if(this.login.value.email == "admin@gmail.com" && this.login.value.password == "12345678")
         {
