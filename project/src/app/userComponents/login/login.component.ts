@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{FormGroup, FormControl} from "@angular/forms";
+import{FormGroup, FormControl,Validators,FormBuilder} from "@angular/forms";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,12 +11,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _route:Router , private _http:HttpClient) { }
+  constructor(private _route:Router , private _http:HttpClient) {
+
+  }
   login:FormGroup|any;
   ngOnInit(): void {
     this.login= new FormGroup({
-      "email": new FormControl(),
-      "password": new FormControl()
+      "email": new FormControl( '',[Validators.required, Validators.email]),
+      "password": new FormControl('', [Validators.required, Validators.minLength(8)])
     })
   }
 
@@ -32,9 +34,9 @@ export class LoginComponent implements OnInit {
         });
         if(user)
         {
-          let userEmail= this.login.value.email;
+          let userEmail= this.login.value.email; //declare user email on login
           alert('you are successfully login' + userEmail);
-          sessionStorage.setItem("userEmail",userEmail) // key of unique user email 
+          sessionStorage.setItem("userEmail",userEmail) // key of unique user email
           console.log(userEmail);
           this._route.navigate(['']);//rout home page ??????????????????????
           this.login.reset();
@@ -54,5 +56,18 @@ export class LoginComponent implements OnInit {
     )
       }
 
+      get emailControl(): FormControl {
+        return this.login.get('email') as FormControl;
+      };
+      get passwordControl(): FormControl {
+        return this.login.get('password') as FormControl;
+      }
+
+    get emailValid(){
+      return this.login.controls.email.valid;
+    }
+    get passValid(){
+      return this.login.controls.password.valid;
+    }
   }
 

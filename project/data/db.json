@@ -57,20 +57,6 @@
       "email": "aly@gmail.com",
       "password": 23645987,
       "gender": "male"
-    },
-    {
-      "id": 3,
-      "name": "Hagar",
-      "email": "Hagar@gmail.com",
-      "password": 23663587,
-      "gender": "female"
-    },
-    {
-      "name": "helmy",
-      "email": "helmy@gmail.com",
-      "password": "365489752",
-      "gender": "male",
-      "id": 4
     }
-   ]
+  ]
 }

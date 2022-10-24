@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{FormGroup, FormControl} from "@angular/forms";
+import{FormGroup, FormControl,Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,9 +17,9 @@ export class SignupComponent implements OnInit {
   signupUser:any;
   ngOnInit(): void {
     this.signup = new FormGroup ({
-      "name": new FormControl(),
-      "email": new FormControl(),
-      "password": new FormControl(),
+      "name": new FormControl('', [Validators.required, Validators.minLength(3)]),
+      "email": new FormControl('',[Validators.email, Validators.required]),
+      "password": new FormControl('', [Validators.minLength(8),Validators.maxLength(20),Validators.required]),
       "gender": new FormControl()
     })
   }
@@ -48,4 +48,14 @@ export class SignupComponent implements OnInit {
     //   alert('something went wrong');
     // })
   }
+  get NameValid(){
+    return this.signup.controls.name.valid;
+  }
+  get EmailValid(){
+    return this.signup.controls.email.valid;
+  }
+  get passwordValid(){
+    return this.signup.controls.password.valid;
+  }
+
 }

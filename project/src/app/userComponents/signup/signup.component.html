@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div class="card custom-card">
+      <div class="card custom-card ">
         <div class="text-center">
           <h1>Sign Up</h1>
           <h6>Register Yourself!</h6>
@@ -11,15 +11,24 @@
             <div class="mb-3">
               <label for="exampleInputName1" class="form-label">Your Name</label>
               <input formControlName="name" #name type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp">
+              <div class="text-danger" *ngIf="!NameValid">
+                <span>*Name is required and more than 3 letter</span>
+              </div>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
               <input formControlName="email" #email type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <div class="text-danger" *ngIf="!EmailValid">
+                <span>*Email is required </span>
+              </div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
               <input formControlName="password"  #password type="password" class="form-control" id="exampleInputPassword1">
+              <div class="text-danger" *ngIf="!passwordValid">
+                <span>*password is required and more than 8</span>
+              </div>
             </div>
             <div class="mb-3">
               <label for="exampleInputGender1" class="form-label">Gender</label><br>
@@ -28,7 +37,7 @@
               <label for="female"class="form-label ms-5 me-2">female</label>
               <input formControlName="gender" #gender type="radio" id="female" name="gender" value="female">
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-primary" [disabled]="signup.invalid">Sign Up</button>
           </form>
           <a routerLink="/login"> Already registered...click to login</a>
         </form>
