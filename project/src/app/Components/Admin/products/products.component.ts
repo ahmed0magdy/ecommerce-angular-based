@@ -10,6 +10,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(private myService: ServicesService) { }
   products:any
+  title:any
   ngOnInit(): void {
     let that = this;
     this.myService.getAllProducts().subscribe(
@@ -32,5 +33,15 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  search(){
+    if(this.title !=""){
+      this.products = this.products.filter((res:any)=>{
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
+      })
+  }else{
+    this.ngOnInit()
+  }
+    console.log(this.title.toLocaleLowerCase())
+  }
 
 }

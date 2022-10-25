@@ -3,7 +3,7 @@
     {
       "title": "product 10",
       "image": "nasa.jpg",
-      "price": "1000",
+      "price": "1250",
       "details": "ksdja kdjksajdksa jdksadlksasa",
       "id": 7
     },
@@ -13,6 +13,34 @@
       "price": "500",
       "details": "aslfjsldfjlsdfjlsdjflskdfj",
       "id": 8
+    },
+    {
+      "title": "zoro",
+      "image": "nasa.jpg",
+      "price": "211",
+      "details": "lorem 2 asd asd asd as dsa",
+      "id": 9
+    },
+    {
+      "title": "toto",
+      "image": "bersheka.jpg",
+      "price": "403",
+      "details": "ajsdasd ajsdsaj dsajdjas jdajsdjsa",
+      "id": 10
+    },
+    {
+      "title": "addidas",
+      "image": "addidas-short.jpeg",
+      "price": "754",
+      "details": " ksad ka kdkas dkadksadaskdkasdk sakdak dksa dka",
+      "id": 11
+    },
+    {
+      "title": "hhh",
+      "image": "addidas-short.jpeg",
+      "price": "410",
+      "details": "akds asdkaskd sakdsa daks dkas dksad",
+      "id": 12
     }
   ],
   "users": [
