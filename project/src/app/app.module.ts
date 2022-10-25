@@ -17,6 +17,7 @@ import { SignupComponent } from './userComponents/signup/signup.component';
 import { UsersService } from './services/users.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { UsersService } from './services/users.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
   ],
   providers: [
     ServicesService,

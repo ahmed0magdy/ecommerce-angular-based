@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "angular-dropdown-menu": "^0.3.0",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
     "ngx-toastr": "^15.2.1",

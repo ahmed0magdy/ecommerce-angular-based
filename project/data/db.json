@@ -8,20 +8,6 @@
       "id": 1
     },
     {
-      "id": 2,
-      "title": "product 2",
-      "image": "bersheka.jpg",
-      "price": 350,
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem."
-    },
-    {
-      "id": 3,
-      "title": "product 3",
-      "image": "nasa.jpg",
-      "price": 450,
-      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem."
-    },
-    {
       "title": "product4",
       "image": "addidas-short.jpeg",
       "price": "450 ",
@@ -57,6 +43,13 @@
       "email": "aly@gmail.com",
       "password": 23645987,
       "gender": "male"
+    },
+    {
+      "name": "hamada",
+      "email": "hamada@gamil.com",
+      "password": "23654789514",
+      "gender": "male",
+      "id": 3
     }
   ]
 }

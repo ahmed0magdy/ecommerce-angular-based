@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../Services/services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -8,9 +9,15 @@ import { ServicesService } from '../Services/services.service';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private myService: ServicesService) { }
+  constructor(private myService: ServicesService, private _route:Router ) { }
   products:any
   ngOnInit(): void {
+    if(sessionStorage.getItem("userEmail")){
+      alert("welcome "+sessionStorage.getItem("userEmail"));
+    }
+    else{
+      this._route.navigate(['']);
+    }
     let that = this;
     this.myService.getAllProducts().subscribe(
       {

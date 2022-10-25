@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from '../Services/services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-products',
@@ -9,10 +10,17 @@ import { ServicesService } from '../Services/services.service';
 })
 export class AddProductsComponent implements OnInit {
 
-  constructor(private myService: ServicesService) {}
+  constructor(private myService: ServicesService,private _route:Router) {}
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("Admin")){
+      alert("welcome "+sessionStorage.getItem("Admin"));
+    }
+    else{
+      alert("you are not an Authorized");
+      this._route.navigate(['']);
 
+    }
   }
   AddProductForm = new FormGroup({
     title: new FormControl(""),
