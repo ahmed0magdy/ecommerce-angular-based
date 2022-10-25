@@ -18,6 +18,9 @@ import { ProductDetailsComponent } from './Components/User/product-details/produ
 import { CheckoutComponent } from './Components/User/checkout/checkout.component';
 import { NavComponent } from './Components/User/nav/nav.component';
 import { ProductItemComponent } from './Components/User/product-item/product-item.component';
+import { LoginComponent } from './userComponents/login/login.component';
+import { SignupComponent } from './userComponents/signup/signup.component';
+import { UsersService } from './services/users.service';
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import { ProductItemComponent } from './Components/User/product-item/product-ite
     CheckoutComponent,
     NavComponent,
     ProductItemComponent,
-
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { ProductItemComponent } from './Components/User/product-item/product-ite
     ReactiveFormsModule
   ],
   providers: [
-    ServicesService
+    ServicesService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })
