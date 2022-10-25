@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.login= new FormGroup({
       "email": new FormControl( '',[Validators.required, Validators.email]),
-      "password": new FormControl('', [Validators.required, Validators.minLength(8)])
+      "password": new FormControl('', [Validators.required, Validators.minLength(7)])
     })
   }
 
   loginData(login:FormGroup){
 
-    console.log(this.login.value);//catch data from sign up
+      console.log(this.login.value);//catch data from sign up
     this._http.get<any>("http://localhost:3000/users").subscribe(
       res=>{
 
@@ -34,17 +34,20 @@ export class LoginComponent implements OnInit {
         });
         if(user)
         {
-          let userEmail= this.login.value.email; //declare user email on login
+           //declare user email on login
+           let userEmail= this.login.value.email;
           alert('you are successfully login' + userEmail);
           sessionStorage.setItem("userEmail",userEmail) // key of unique user email
           console.log(userEmail);
           this._route.navigate(['']);//rout home page ??????????????????????
           this.login.reset();
         }
+
         else if(this.login.value.email == "admin@gmail.com" && this.login.value.password == "12345678")
         {
+          sessionStorage.setItem("Admin", 'admin' );
           alert('you are successfully login as Admin');
-          this._route.navigate(['Products']);
+          this._route.navigate(['AddProducts']);
           this.login.reset();
         }
         else{
@@ -54,6 +57,8 @@ export class LoginComponent implements OnInit {
       }
 
     )
+
+
       }
 
       get emailControl(): FormControl {
@@ -62,12 +67,11 @@ export class LoginComponent implements OnInit {
       get passwordControl(): FormControl {
         return this.login.get('password') as FormControl;
       }
-
-    get emailValid(){
-      return this.login.controls.email.valid;
-    }
-    get passValid(){
-      return this.login.controls.password.valid;
-    }
+      get emailValid(){
+        return this.login.controls.email.valid;
+      }
+      get passValid(){
+        return this.login.controls.password.valid;
+      }
   }
 
