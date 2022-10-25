@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-product-item',
@@ -10,13 +9,21 @@ import { UsersService } from '../users.service';
 export class ProductItemComponent implements OnInit {
 
   constructor() { }
-   quantity:number=0;
+   quantity:number=1;
    @Input() product:any={};
    @Output() item=new EventEmitter()
     ngOnInit(): void {
    
   }
 
+  plus()
+  {
+    this.quantity++;
+  }
+  minus()
+  {
+    this.quantity--;
+  }
   Addtocart()
   {
     this.product.quanity=this.quantity;
