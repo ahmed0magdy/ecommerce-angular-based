@@ -19,6 +19,7 @@ import { CheckoutComponent } from './Components/User/checkout/checkout.component
 import { NavComponent } from './Components/User/nav/nav.component';
 import { ProductItemComponent } from './Components/User/product-item/product-item.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
