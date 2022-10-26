@@ -14,7 +14,7 @@ export class AddProductsComponent implements OnInit {
 
   ngOnInit(): void {
     if(sessionStorage.getItem("Admin")){
-      alert("welcome "+sessionStorage.getItem("Admin"));
+      // alert("welcome "+sessionStorage.getItem("Admin"));
     }
     else{
       alert("you are not an Authorized");
@@ -31,7 +31,7 @@ export class AddProductsComponent implements OnInit {
   AddProd(){
     this.myService.AddProd(this.AddProductForm.value).subscribe();
     alert("product is added")
-    window.location.href = "/"
+    window.location.href = "/admin"
   }
 
 

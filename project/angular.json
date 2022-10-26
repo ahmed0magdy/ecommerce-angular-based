@@ -25,9 +25,16 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
+              
+
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/@popperjs/core/dist/umd/popper.js",
+              "node_modules/jquery/dist/jquery.min.js"
+
+
             ]
           },
           "configurations": {
