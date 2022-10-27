@@ -13,12 +13,15 @@ export class ProductsComponent implements OnInit {
   products:any
   title:any
   ngOnInit(): void {
-    if(sessionStorage.getItem("userEmail")){
-      // alert("welcome "+sessionStorage.getItem("userEmail"));
+    if(sessionStorage.getItem("Admin")){
+      // alert("welcome "+sessionStorage.getItem("Admin"));
     }
     else{
+      alert("you are not an Authorized");
       this._route.navigate(['']);
+
     }
+
     let that = this;
     this.myService.getAllProducts().subscribe(
       {
