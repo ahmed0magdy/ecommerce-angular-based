@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,9 +10,16 @@ export class CartComponent implements OnInit {
 
   productsInCart:any[]=[]
   total:any=0;
-  constructor() { }
+  constructor(private _route:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("userEmail")){
+      // alert("welcome "+sessionStorage.getItem("userEmail"));
+    }
+    else{
+      alert("please logged in ....");
+      this._route.navigate(['/login']);
+    }
     this.listItemstocart()
     this.getTotal()
   }
