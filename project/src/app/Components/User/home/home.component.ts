@@ -12,7 +12,11 @@ export class HomeComponent implements OnInit {
 
  products:any[]=[];
  productsInCart:any[]=[]
+
+ title:any;
+
  users:any[]=[];
+
 
   ngOnInit(): void {
      this.getdata();
@@ -29,18 +33,27 @@ export class HomeComponent implements OnInit {
   getdata()
   {
     this.myserv.getAllProducts().subscribe(
-      (data:any)=>{ 
-        this.products=data 
+      (data:any)=>{
+        this.products=data
       console.log(data)
     },
       (err)=>{console.log(err)}
     )
   }
-
+  search(){
+    if(this.title !=""){
+      this.products = this.products.filter((res:any)=>{
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
+      })
+  }else{
+    this.ngOnInit()
+  }
+    console.log(this.title.toLocaleLowerCase())
+  }
   addtocart(event:any){
     if("cart" in localStorage)
     {
-      this.productsInCart=JSON.parse(localStorage.getItem("cart")!); // updated array -- ! to escape null 
+      this.productsInCart=JSON.parse(localStorage.getItem("cart")!); // updated array -- ! to escape null
       let exist = this.productsInCart.find(item => item.id == event.id);
       if(exist){
         alert('Item Already chosen')
@@ -49,9 +62,9 @@ export class HomeComponent implements OnInit {
       {
         this.productsInCart.push(event);
         localStorage.setItem('cart',JSON.stringify(this.productsInCart) )
-  
+
       }
-     
+
     }
     else
     {
@@ -62,5 +75,6 @@ export class HomeComponent implements OnInit {
 
 
   }
+
 
 }

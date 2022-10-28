@@ -4,6 +4,8 @@ import { AddProductsComponent } from './Components/Admin/add-products/add-produc
 import { ErrorComponent } from './Components/Admin/error/error.component';
 import { ProductsComponent } from './Components/Admin/products/products.component';
 import { UpdateProductsComponent } from './Components/Admin/update-products/update-products.component';
+import { LoginComponent } from './userComponents/login/login.component';
+import { SignupComponent } from './userComponents/signup/signup.component';
 import { CartComponent } from './Components/User/cart/cart.component';
 import { HomeComponent } from './Components/User/home/home.component';
 import { ProductDetailsComponent } from './Components/User/product-details/product-details.component';
@@ -38,9 +40,20 @@ const routes: Routes = [
     component:UpdateProductsComponent
   },
   {
+    path: "login",
+    component:LoginComponent
+  },
+  {
+    path: "signup",
+     component:SignupComponent
+    },
+  {
     path:"**",
     component:ErrorComponent
   },
+
+
+
 ];
 
 @NgModule({
