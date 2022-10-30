@@ -22,6 +22,7 @@ class ProductController extends Controller
         $data = request()->all();
         return Product::create([
             'title' => $data['title'],
+            'SKU' => $data['SKU'],
             'details' => $data['details'],
             'image' => $data['image'],
             'price' => $data['price'],
@@ -32,7 +33,9 @@ class ProductController extends Controller
 
     public function edit($postId){
 
-        return  $allPost = Product::find($postId);
+
+        return $allPost = Product::find($postId);
+
 
     }
 
@@ -43,6 +46,7 @@ class ProductController extends Controller
 
         return  $postId->update([
             'title' => $request->title,
+            'SKU' => $request->SKU,
             'details' => $request->details,
             'image' => $request->image,
             'price' => $request->price
