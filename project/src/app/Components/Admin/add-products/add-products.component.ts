@@ -13,17 +13,18 @@ export class AddProductsComponent implements OnInit {
   constructor(private myService: ServicesService,private _route:Router) {}
 
   ngOnInit(): void {
-    if(sessionStorage.getItem("Admin")){
-      // alert("welcome "+sessionStorage.getItem("Admin"));
-    }
-    else{
-      alert("you are not an Authorized");
-      this._route.navigate(['']);
+    // if(sessionStorage.getItem("Admin")){
+    //   // alert("welcome "+sessionStorage.getItem("Admin"));
+    // }
+    // else{
+    //   alert("you are not an Authorized");
+    //   this._route.navigate(['']);
 
-    }
+    // }
   }
   AddProductForm = new FormGroup({
     title: new FormControl(""),
+    SKU: new FormControl(""),
     image:new FormControl(""),
     price: new FormControl(0),
     details: new FormControl("")

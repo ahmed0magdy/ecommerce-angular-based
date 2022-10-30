@@ -13,12 +13,12 @@ export class ProductsComponent implements OnInit {
   products:any
   title:any
   ngOnInit(): void {
-    if(sessionStorage.getItem("userEmail")){
-      // alert("welcome "+sessionStorage.getItem("userEmail"));
-    }
-    else{
-      this._route.navigate(['']);
-    }
+    // if(sessionStorage.getItem("userEmail")){
+    //   // alert("welcome "+sessionStorage.getItem("userEmail"));
+    // }
+    // else{
+    //   this._route.navigate(['']);
+    // }
     let that = this;
     this.myService.getAllProducts().subscribe(
       {

@@ -9,7 +9,7 @@ export class ServicesService {
 
 
 
-private url  = "http://localhost:3000/products"
+private url  = "http://localhost:8000/api/products"
 
 getAllProducts(){
   return this.myClient.get(this.url)
