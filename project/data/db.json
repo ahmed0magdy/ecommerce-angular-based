@@ -50,6 +50,13 @@
       "password": "toto1234",
       "gender": "female",
       "id": 4
+    },
+    {
+      "name": "mezo",
+      "email": "mezo@yahoo.com",
+      "password": "123456789",
+      "gender": "male",
+      "id": 5
     }
   ]
 }

@@ -15,10 +15,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  logout(){
-    sessionStorage.removeItem("userEmail");
-    sessionStorage.removeItem("Admin");
-    this._route.navigate(['']);
-   }
+ 
  
 }

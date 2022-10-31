@@ -23,6 +23,10 @@ export class ProductItemComponent implements OnInit {
   minus()
   {
     this.quantity--;
+    if(this.quantity <1)
+    {
+      this.quantity =1;
+    }
   }
   Addtocart()
   {

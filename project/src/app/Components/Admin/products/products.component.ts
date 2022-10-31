@@ -22,6 +22,26 @@ export class ProductsComponent implements OnInit {
     //   this._route.navigate(['']);
     // }
     this.getProducts();
+    if(sessionStorage.getItem("Admin")){
+      // alert("welcome "+sessionStorage.getItem("Admin"));
+    }
+    else{
+      alert("you are not an Authorized");
+      this._route.navigate(['']);
+
+    }
+
+    let that = this;
+    this.myService.getAllProducts().subscribe(
+      {
+        next(data){
+          that.products = data;
+        },
+        error(err){
+          console.log(err);
+        }
+      }
+    )
 
  
   }
