@@ -12,7 +12,16 @@ export class ProductsComponent implements OnInit {
   constructor(private myService: ServicesService, private _route:Router ) { }
   products:any
   title:any
+  page:number = 1;
+  total:number = 0;
   ngOnInit(): void {
+    // if(sessionStorage.getItem("userEmail")){
+    //   // alert("welcome "+sessionStorage.getItem("userEmail"));
+    // }
+    // else{
+    //   this._route.navigate(['']);
+    // }
+    this.getProducts();
     if(sessionStorage.getItem("Admin")){
       // alert("welcome "+sessionStorage.getItem("Admin"));
     }
@@ -34,7 +43,18 @@ export class ProductsComponent implements OnInit {
       }
     )
 
+ 
   }
+  getProducts(){
+  this.myService.getAllProducts(this.page).subscribe((response:any)=>{
+    this.products = response.data;
+    this.total = response.total;
+  })
+  }
+  pageChangeEvent(event: number){
+    this.page = event;
+    this.getProducts();
+}
   DeleteProd(prod_id:any){
     console.log(prod_id);
     this.myService.Deleteprod(prod_id).subscribe((data)=>{

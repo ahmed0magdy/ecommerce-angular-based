@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
  products:any[]=[];
  productsInCart:any[]=[]
-
+ page:number = 1;
+ total:number = 0;
  title:any;
 
  users:any[]=[];
@@ -32,14 +33,15 @@ export class HomeComponent implements OnInit {
 
   getdata()
   {
-    this.myserv.getAllProducts().subscribe(
-      (data:any)=>{
-        this.products=data
-      console.log(data)
-    },
-      (err)=>{console.log(err)}
-    )
+    this.myserv.getAllProducts(this.page).subscribe((response:any)=>{
+      this.products = response.data;
+      this.total = response.total;
+    })
   }
+  pageChangeEvent(event: number){
+    this.page = event;
+    this.getdata();
+}
   search(){
     if(this.title !=""){
       this.products = this.products.filter((res:any)=>{
