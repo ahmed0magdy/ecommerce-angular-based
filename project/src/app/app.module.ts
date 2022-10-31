@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/Admin/header/header.component';
@@ -21,6 +20,7 @@ import { ProductItemComponent } from './Components/User/product-item/product-ite
 import { LoginComponent } from './userComponents/login/login.component';
 import { SignupComponent } from './userComponents/signup/signup.component';
 import { UsersService } from './services/users.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -40,6 +40,7 @@ import { UsersService } from './services/users.service';
     ProductItemComponent,
     LoginComponent,
     SignupComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -47,6 +48,7 @@ import { UsersService } from './services/users.service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   
   ],
   providers: [

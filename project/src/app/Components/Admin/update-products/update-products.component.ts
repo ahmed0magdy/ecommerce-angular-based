@@ -16,6 +16,7 @@ export class UpdateProductsComponent implements OnInit {
 
   UpdateProductForm = new FormGroup({
     title: new FormControl(""),
+    SKU: new FormControl(""),
     image:new FormControl(""),
     price: new FormControl(""),
     details: new FormControl("")
@@ -27,6 +28,7 @@ export class UpdateProductsComponent implements OnInit {
       console.log(data);
       this.UpdateProductForm = new FormGroup({
         title: new FormControl(data['title']),
+        SKU: new FormControl(data['SKU']),
         image:new FormControl(data['image']),
         price: new FormControl(data['price']),
         details: new FormControl(data['details'])

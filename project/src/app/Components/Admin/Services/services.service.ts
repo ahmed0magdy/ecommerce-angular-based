@@ -9,10 +9,10 @@ export class ServicesService {
 
 
 
-private url  = "http://localhost:3000/products"
+private url  = "http://localhost:8000/api/products"
 
-getAllProducts(){
-  return this.myClient.get(this.url)
+getAllProducts(page:number){
+  return this.myClient.get(this.url +'?page=' +page)
 }
 getById(id:number){
   return this.myClient.get(`${this.url}/${id}`)
