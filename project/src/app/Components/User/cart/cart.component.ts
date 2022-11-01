@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,9 +10,16 @@ export class CartComponent implements OnInit {
 
   productsInCart:any[]=[]
   total:any=0;
-  constructor() { }
+  constructor(private _route:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("userEmail")){
+      // alert("welcome "+sessionStorage.getItem("userEmail"));
+    }
+    else{
+      alert("please logged in ....");
+      this._route.navigate(['/login']);
+    }
     this.listItemstocart()
     this.getTotal()
   }
@@ -45,6 +53,10 @@ export class CartComponent implements OnInit {
   minus(ind:any)
   {
     this.productsInCart[ind].quanity--;
+    if(this.productsInCart[ind].quanity <1)
+    {
+      this.productsInCart[ind].quanity =1;
+    }
     this.getTotal()
     localStorage.setItem("cart",JSON.stringify(this.productsInCart))
 
@@ -78,18 +90,28 @@ export class CartComponent implements OnInit {
 
   checkOut()
   {
-    let order = this.productsInCart.map(item=>{
-      return {productId:item.id,quantity:item.quanity}
-    })
-
-    let finalData=
+    if(this.total==0)
     {
-      userId:3,
-      date: new Date(),
-      order:order
+      alert('Cart Is Empty')
     }
-    console.log(finalData)
-    alert('your order has been completed!')
-    window.location.href='/'
+    else{
+      let order = this.productsInCart.map(item=>{
+        return {productId:item.id,quantity:item.quanity,totalPrice:item.price*item.quanity}
+      })
+  
+      let finalData=
+      {
+        userEmail:sessionStorage.getItem('userEmail'),
+        date: new Date(),
+        order:order,
+        finaltotal:this.total
+      }
+      localStorage.setItem("checkout",JSON.stringify(finalData));
+
+      // console.log(finalData)
+      alert('your order has been completed!')
+      window.location.href='/'
+    }
+   
   }
 }
