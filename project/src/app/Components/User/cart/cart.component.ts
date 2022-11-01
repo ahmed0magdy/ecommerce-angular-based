@@ -13,13 +13,13 @@ export class CartComponent implements OnInit {
   constructor(private _route:Router) { }
 
   ngOnInit(): void {
-    if(sessionStorage.getItem("userEmail")){
-      // alert("welcome "+sessionStorage.getItem("userEmail"));
-    }
-    else{
-      alert("please logged in ....");
-      this._route.navigate(['/login']);
-    }
+    // if(sessionStorage.getItem("userEmail")){
+    //   // alert("welcome "+sessionStorage.getItem("userEmail"));
+    // }
+    // else{
+    //   alert("please logged in ....");
+    //   this._route.navigate(['/login']);
+    // }
     this.listItemstocart()
     this.getTotal()
   }
