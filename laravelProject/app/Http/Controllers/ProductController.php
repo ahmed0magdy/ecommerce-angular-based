@@ -18,13 +18,13 @@ class ProductController extends Controller
 
     }
 
-    public function store(){
-        $data = request()->all();
+    public function store(Request $request){
+        $data = $request->all();
         return Product::create([
             'title' => $data['title'],
             'SKU' => $data['SKU'],
             'details' => $data['details'],
-            'image' => $data['image'],
+            'image' =>$data['image'],
             'price' => $data['price'],
         ]);
 
