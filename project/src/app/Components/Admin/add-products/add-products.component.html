@@ -10,6 +10,9 @@
     <label class="mx-2">SKU: </label>
     <input formControlName="SKU" type="text" class="form-control" />
   </div>
+  <div *ngIf="!SKUvalid" id="emailHelp" class="mt-2 form-text">
+    <p class="alert alert-danger">SKU must be 8 chars</p>
+  </div>
   <div class="m-2 form-group d-flex justify-content-center ">
     <label class="mx-2">image: </label>
     <input formControlName="image" type="text" class="form-control" />

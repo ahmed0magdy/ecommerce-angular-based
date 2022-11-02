@@ -24,16 +24,23 @@ export class AddProductsComponent implements OnInit {
   }
   AddProductForm = new FormGroup({
     title: new FormControl(""),
-    SKU: new FormControl(""),
+    SKU: new FormControl("",[Validators.required,Validators.maxLength(8),Validators.minLength(0)]),
     image:new FormControl(""),
     price: new FormControl(0),
     details: new FormControl("")
   })
-  AddProd(){
-    this.myService.AddProd(this.AddProductForm.value).subscribe();
-    alert("product is added")
-    window.location.href = "/admin"
+  get SKUvalid(){
+    return this.AddProductForm.controls.SKU.valid
   }
+  AddProd(){
+    if(this.AddProductForm.valid){
+      this.myService.AddProd(this.AddProductForm.value).subscribe();
+      alert("product is added")
+      window.location.href = "/admin"    
+    }else{
+    // alert("error");
+    }
 
 
+}
 }
