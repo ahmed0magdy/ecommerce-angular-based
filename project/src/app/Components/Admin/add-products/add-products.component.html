@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container mt-5 m-auto form w-50">
-<form [formGroup] = "AddProductForm" (ngSubmit)="onCreateService(AddProductForm)" action="" enctype="multipart/form-data">
+<form [formGroup] = "form" (ngSubmit)="submitForm()" >
   <h2 class="text-center mb-5">Add Product</h2>
   <div class="m-3 form-group d-flex justify-content-center ">
     <label class="mx-2">title: </label>
@@ -12,7 +12,7 @@
   </div>
   <div class="m-2 form-group d-flex justify-content-center ">
     <label class="mx-2">image: </label>
-    <input  type="file" accept=".png, .jpg, .jpeg" (change)="onSelectImage($event)" class="form-control" formControlName="icon">
+    <input  type="file" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)" class="form-control" formControlName="icon">
     <!-- <input formControlName="image" type="file" class="form-control" /> -->
   </div>
   <div class="m-2 form-group d-flex justify-content-center ">

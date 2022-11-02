@@ -11,10 +11,11 @@ export class ProductDetailsComponent implements OnInit {
 
   singleProduct:any;
   id:any;
+  imgsrc= 'http://localhost:8000/storage/images';
   constructor(private myserv:ServicesService ,private myactivrout:ActivatedRoute) 
   {
     this.id=myactivrout.snapshot.params['id'];
-     this.myserv.getById(this.id).subscribe(
+     this.myserv.getByIdshow(this.id).subscribe(
       (data)=> this.singleProduct =data
      );
 

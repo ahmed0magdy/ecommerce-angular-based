@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
+  
+  imgsrc= 'http://localhost:8000/storage/images';
 
   constructor() { }
    quantity:number=1;

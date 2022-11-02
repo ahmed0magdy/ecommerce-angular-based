@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from '../Services/services.service';
 import { Router } from '@angular/router';
 
@@ -10,9 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AddProductsComponent implements OnInit {
 
-  selectedImage:any
-  AddProductForm:any
-  constructor(private myService: ServicesService,private _route:Router) {}
+  form :FormGroup;
+  constructor(public fb:FormBuilder,public myService: ServicesService,private _route:Router)
+   {
+      this.form = this.fb.group({
+      title: '',
+      SKU: '',
+      image:null,
+      price: 0,
+      details: ''
+    })
+   }
 
   ngOnInit(): void {
     // if(sessionStorage.getItem("Admin")){
@@ -24,34 +32,31 @@ export class AddProductsComponent implements OnInit {
 
     // }
   }
-  // AddProductForm = new FormGroup({
-  //   title: new FormControl(""),
-  //   SKU: new FormControl(""),
-  //   image:new FormControl(""),
-  //   price: new FormControl(0),
-  //   details: new FormControl("")
-  // })
-  // AddProd(){
-  //   this.myService.AddProd(this.AddProductForm.value).subscribe();
-  //   // alert("product is added")
-  //   // window.location.href = "/admin"
-  //   console.log(this.AddProductForm.value);
-  // }
-  onSelectImage(event:any) {
-    this.selectedImage = event.srcElement.files[0];
- }
+ 
 
- onCreateService(form: FormGroup) {
-   const formData = new FormData();
-   formData.append('image', this.selectedImage, this.selectedImage.name);
-   formData.append('title', this.AddProductForm.get('title').value);
-   formData.append('SKU', this.AddProductForm.get('SKU').value);
-   formData.append('details', this.AddProductForm.get('details').value);
-   formData.append('price', this.AddProductForm.get('price').value);
-   console.log(formData);
-    this.myService.AddProd(this.AddProductForm.value).subscribe();
+uploadFile(event:Event){
+  const file = (event.target as HTMLInputElement)?.files?.[0];
+  this.form.patchValue({
+    image:file
+  });
+}
 
- }
+
+submitForm()
+{
+  const formData :any= new FormData();
+     formData.append('image', this.form.controls['image'].value);
+     formData.append('title', this.form.controls['title'].value);
+     formData.append('SKU', this.form.controls['SKU'].value);
+     formData.append('details', this.form.controls['details'].value);
+     formData.append('price', this.form.controls['price'].value);
+     console.log(formData);
+     this.myService.AddProd(formData).subscribe();
+
+}
+
+
+
 
 
 }

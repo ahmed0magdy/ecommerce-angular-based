@@ -15,7 +15,7 @@
 <tbody>
   <tr class="table-light" *ngFor="let p of products | paginate: { itemsPerPage: 10, currentPage: page, totalItems: total }">
     <td>{{p.title}}</td>
-    <td><img width="150" src="assets/images/{{p.image}}" alt=""></td>
+    <td><img width="150" src="{{imgsrc}}/{{p.image}}" alt="{{p.image}}"></td>
     <td>{{p.price}} EGP</td>
     <td>{{p.details}}</td>
     <td><a routerLink="/products/edit/{{p.SKU}}" class="btn btn-info">Edit</a>

@@ -17,6 +17,9 @@ getAllProducts(page:number){
 getById(SKU:any){
   return this.myClient.get(`${this.url}/${SKU}/edit`)
 }
+getByIdshow(SKU:any){
+  return this.myClient.get(`${this.url}/${SKU}`)
+}
 AddProd(newProduct:any){
   return this.myClient.post(this.url,newProduct)
 }

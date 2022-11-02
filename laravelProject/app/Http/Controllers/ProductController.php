@@ -23,13 +23,13 @@ class ProductController extends Controller
         if ($image = $request->file('image')) {
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $path = $request->file('image')->storeAs('public/images', $profileImage);
-            // $request->image = "$profileImage";
+            $request->image = "$profileImage";
             $data = $request->all();
             return Product::create([
             'title' => $data['title'],
             'SKU' => $data['SKU'],
             'details' => $data['details'],
-            'image' =>$path,
+            'image' =>$profileImage,
             'price' => $data['price'],
         ]);
 
