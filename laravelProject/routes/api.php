@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("products",[ProductController::class,'index']);
 Route::get("products/{product}",[ProductController::class,'show']);
 Route::post("products",[ProductController::class,'store']);
-Route::post("products",[ProductController::class,'store']);
+// Route::post("products",[ProductController::class,'store']);
 Route::get('/products/{product}/edit',[ProductController::class,'edit']);
 Route::put('/products/{product}',[ProductController::class,'update']);
 Route::delete('/products/{product}',[ProductController::class,'destroy']);

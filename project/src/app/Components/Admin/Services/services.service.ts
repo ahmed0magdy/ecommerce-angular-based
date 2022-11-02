@@ -14,8 +14,8 @@ private url  = "http://localhost:8000/api/products"
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
-getById(id:number){
-  return this.myClient.get(`${this.url}/${id}`)
+getById(SKU:any){
+  return this.myClient.get(`${this.url}/${SKU}/edit`)
 }
 AddProd(newProduct:any){
   return this.myClient.post(this.url,newProduct)

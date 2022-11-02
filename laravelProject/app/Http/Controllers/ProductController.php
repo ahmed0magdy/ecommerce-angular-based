@@ -19,29 +19,39 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->all();
-        return Product::create([
+
+        if ($image = $request->file('image')) {
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('public/images', $profileImage);
+            // $request->image = "$profileImage";
+            $data = $request->all();
+            return Product::create([
             'title' => $data['title'],
             'SKU' => $data['SKU'],
             'details' => $data['details'],
-            'image' =>$data['image'],
+            'image' =>$path,
             'price' => $data['price'],
         ]);
 
+        }
+        else{
+            return 'something went wrong!';
+        }
+
+        
     }
 
 
-    public function edit($postId){
+    public function edit($SKU){
 
 
-        return $allPost = Product::find($postId);
-
+        return $editProduct = Product::where('SKU', $SKU)->get()->first();
 
     }
 
-    public function update(Request $request,$id ){
-
-            $postId = Product::find($id);
+    public function update(Request $request,$sku ){
+            // $postId = Product::find($sku);
+         $postId = Product::where('SKU', $sku)->get()->first();
 
 
         return  $postId->update([

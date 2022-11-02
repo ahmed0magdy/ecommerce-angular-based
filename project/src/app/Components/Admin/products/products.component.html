@@ -18,7 +18,8 @@
     <td><img width="150" src="assets/images/{{p.image}}" alt=""></td>
     <td>{{p.price}} EGP</td>
     <td>{{p.details}}</td>
-    <td><a routerLink="/products/edit/{{p.id}}" class="btn btn-info">Edit</a> <a (click)="DeleteProd(p.id)" class="mx-3 btn btn-danger">Delete</a></td>
+    <td><a routerLink="/products/edit/{{p.SKU}}" class="btn btn-info">Edit</a>
+       <a (click)="DeleteProd(p.id)" class="mx-3 btn btn-danger">Delete</a></td>
   </tr>
 </tbody>
 </table>
