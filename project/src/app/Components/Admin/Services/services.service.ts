@@ -14,13 +14,13 @@ private url  = "http://localhost:8000/api/products"
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
-getById(id:number){
-  return this.myClient.get(`${this.url}/${id}`)
+getById(slug:any){
+  return this.myClient.get(`${this.url}/${slug}/edit`)
 }
 AddProd(newProduct:any){
   return this.myClient.post(this.url,newProduct)
 }
-UpdateProd(updatePro:any,id:number){
+UpdateProd(updatePro:any,id:any){
   return this.myClient.put(`${this.url}/${id}`,updatePro)
 }
 Deleteprod(id:number){
