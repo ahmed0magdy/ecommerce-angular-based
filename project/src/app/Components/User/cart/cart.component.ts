@@ -10,6 +10,8 @@ export class CartComponent implements OnInit {
 
   productsInCart:any[]=[]
   total:any=0;
+  imgsrc= 'http://localhost:8000/storage/images';
+
   constructor(private _route:Router) { }
 
   ngOnInit(): void {

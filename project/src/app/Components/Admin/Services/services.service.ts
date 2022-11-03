@@ -16,6 +16,7 @@ getAllProducts(page:number){
 }
 getById(slug:any){
   return this.myClient.get(`${this.url}/${slug}/edit`)
+
 }
 AddProd(newProduct:any){
   return this.myClient.post(this.url,newProduct)

@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   constructor(private myService: ServicesService, private _route:Router ) { }
   products:any
   title:any
+  imgsrc:any
   page:number = 1;
   total:number = 0;
   ngOnInit(): void {
@@ -48,6 +49,7 @@ export class ProductsComponent implements OnInit {
   getProducts(){
   this.myService.getAllProducts(this.page).subscribe((response:any)=>{
     this.products = response.data;
+    this.imgsrc= 'http://localhost:8000/storage/images';
     this.total = response.total;
   })
   }

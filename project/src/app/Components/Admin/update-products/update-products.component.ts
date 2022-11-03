@@ -24,7 +24,7 @@ export class UpdateProductsComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params['id']);
+    console.log(this.route.snapshot);
     this.myService.getById(this.route.snapshot.params['id']).subscribe((data:any)=>{
       console.log(data);
       this.UpdateProductForm = new FormGroup({
