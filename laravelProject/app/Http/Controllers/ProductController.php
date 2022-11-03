@@ -41,28 +41,29 @@ class ProductController extends Controller
         
     }
 
+    public function edit($slug){
 
-    public function edit($SKU){
-
-
-        return $editProduct = Product::where('SKU', $SKU)->get()->first();
+        return $editProduct = Product::where('slug', $slug)->get()->first();
 
     }
 
     public function update(Request $request,$sku ){
-            // $postId = Product::find($sku);
-         $postId = Product::where('SKU', $sku)->get()->first();
 
 
-        return  $postId->update([
-            'title' => $request->title,
-            'SKU' => $request->SKU,
-            'details' => $request->details,
-            'image' => $request->image,
-            'price' => $request->price
-        ]);
+        // $postId = Product::find($sku);
+     $postId = Product::where('slug', $sku)->get()->first();
 
-    }
+
+
+    return  $postId->update([
+        'title' => $request->title,
+        'SKU' => $request->SKU,
+        'details' => $request->details,
+        'image' => $request->image,
+        'price' => $request->price
+    ]);
+
+}
     public function destroy($postId){
     $all = Product::find($postId);
     // Post::destroy($postId);
