@@ -10,12 +10,12 @@
     <label class="mx-2">SKU: </label>
     <input formControlName="SKU" type="text" class="form-control" />
   </div>
-  <div *ngIf="!SKUvalid" id="emailHelp" class="mt-2 form-text">
+  <!-- <div *ngIf="!SKUvalid" id="emailHelp" class="mt-2 form-text">
     <p class="alert alert-danger">SKU must be 8 chars</p>
-  </div>
+  </div> -->
   <div class="m-2 form-group d-flex justify-content-center ">
     <label class="mx-2">image: </label>
-    <input  type="file" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)" class="form-control" formControlName="icon">
+    <input  type="file" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)" class="form-control" formControlName="image">
     <!-- <input formControlName="image" type="file" class="form-control" /> -->
   </div>
   <div class="m-2 form-group d-flex justify-content-center ">

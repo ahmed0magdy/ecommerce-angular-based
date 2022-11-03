@@ -15,6 +15,10 @@ getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
 getById(slug:any){
+  return this.myClient.get(`${this.url}/${slug}`)
+
+}
+getByIdedit(slug:any){
   return this.myClient.get(`${this.url}/${slug}/edit`)
 
 }

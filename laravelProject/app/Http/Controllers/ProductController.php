@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -20,18 +21,19 @@ class ProductController extends Controller
 
     public function store(Request $request){
 
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('image'))
+         {
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $path = $request->file('image')->storeAs('public/images', $profileImage);
-            $request->image = "$profileImage";
+            // $request->image = "$profileImage";
             $data = $request->all();
             return Product::create([
-            'title' => $data['title'],
-            'SKU' => $data['SKU'],
-            'details' => $data['details'],
-            'image' =>$profileImage,
-            'price' => $data['price'],
-        ]);
+                                    'title' => $data['title'],
+                                    'SKU' => $data['SKU'],
+                                    'details' => $data['details'],
+                                    'image' =>$profileImage,
+                                    'price' => $data['price'],
+                                ]);
 
         }
         else{
@@ -43,7 +45,7 @@ class ProductController extends Controller
 
     public function edit($slug){
 
-        return $editProduct = Product::where('slug', $slug)->get()->first();
+        return $editProduct = Product::where('SKU', $slug)->get()->first();
 
     }
 
@@ -51,23 +53,40 @@ class ProductController extends Controller
 
 
         // $postId = Product::find($sku);
-     $postId = Product::where('slug', $sku)->get()->first();
+     $product = Product::where('SKU', $sku)->get()->first();
+
+        if ($image = $request->file('image')) {
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('public/images', $profileImage);
+            // $request->image = "$profileImage";
 
 
+        return  $product->update([
+            'title' => $request->title,
+            'SKU' => $request->SKU,
+            'details' => $request->details,
+            'image' => $profileImage,
+            'price' => $request->price
+        ]);
+        Storage::delete('public/images/' . $request->image);
 
-    return  $postId->update([
-        'title' => $request->title,
-        'SKU' => $request->SKU,
-        'details' => $request->details,
-        'image' => $request->image,
-        'price' => $request->price
-    ]);
+         }
+        else{
+            return  $product->update([
+                'title' => $request->title,
+                'SKU' => $request->SKU,
+                'details' => $request->details,
+                'price' => $request->price
+        ]);
+        }
+
 
 }
     public function destroy($postId){
-    $all = Product::find($postId);
+    $product = Product::find($postId);
     // Post::destroy($postId);
+    Storage::delete('public/images/' . $product->image);
 
-    return $all->delete();
+    return $product->delete();
 }
 }

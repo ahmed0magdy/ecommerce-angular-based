@@ -1,5 +1,5 @@
 <div class="container mt-5 m-auto form w-50">
-  <form [formGroup] = "UpdateProductForm" (ngSubmit)="Updatepro()" action="">
+  <form [formGroup] = "form" (ngSubmit)="Updatepro()" action="">
     <h2 class="text-center mb-5">Edit Product</h2>
     <div class="m-3 form-group d-flex justify-content-center ">
       <label class="mx-2">title: </label>
@@ -11,7 +11,9 @@
     </div>
     <div class="m-2 form-group d-flex justify-content-center ">
       <label class="mx-2">image: </label>
-      <input formControlName="image" type="text" class="form-control" />
+      <input formControlName="image" type="file" class="form-control" (change)="uploadFile($event)" />
+      <div class="col-2"><img class="img-fluid" src="{{imgsrc}}/{{myimage}}" alt="{{myimage}}"></div>
+
     </div>
     <div class="m-2 form-group d-flex justify-content-center ">
       <label class="mx-2">price: </label>
