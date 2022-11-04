@@ -38,7 +38,7 @@ class ProductController extends Controller
             return 'something went wrong!';
         }
 
-        
+
     }
 
     public function edit($slug){
