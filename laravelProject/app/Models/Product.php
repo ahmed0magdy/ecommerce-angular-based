@@ -17,6 +17,7 @@ class Product extends Model
         'details',
         'image',
         'price',
+        'status',
     ];
     public function sluggable(): array
     {

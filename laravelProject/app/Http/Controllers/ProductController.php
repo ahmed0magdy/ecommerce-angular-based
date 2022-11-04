@@ -31,6 +31,8 @@ class ProductController extends Controller
             'details' => $data['details'],
             'image' =>$profileImage,
             'price' => $data['price'],
+            'status'=>$data['status'],
+
         ]);
 
         }
@@ -38,7 +40,7 @@ class ProductController extends Controller
             return 'something went wrong!';
         }
 
-        
+
     }
 
     public function edit($slug){
@@ -60,7 +62,8 @@ class ProductController extends Controller
         'SKU' => $request->SKU,
         'details' => $request->details,
         'image' => $request->image,
-        'price' => $request->price
+        'price' => $request->price,
+        'status'=>$request->status,
     ]);
 
 }
