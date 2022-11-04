@@ -33,7 +33,7 @@ export class AddProductsComponent implements OnInit {
   }
 
 
-  uploadFile(event: Event) {
+  uploadFile(event:Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
     this.form.patchValue({
       image: file

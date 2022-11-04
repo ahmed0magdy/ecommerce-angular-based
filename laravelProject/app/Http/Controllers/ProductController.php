@@ -21,24 +21,24 @@ class ProductController extends Controller
 
     public function store(Request $request){
 
-        if ($image = $request->file('image'))
-         {
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $path = $request->file('image')->storeAs('public/images', $profileImage);
+        // if ($image = $request->file('image'))
+        //  {
+        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $path = $request->file('image')->storeAs('public/images', $profileImage);
             // $request->image = "$profileImage";
             $data = $request->all();
             return Product::create([
                                     'title' => $data['title'],
                                     'SKU' => $data['SKU'],
                                     'details' => $data['details'],
-                                    'image' =>$profileImage,
+                                    'image' =>$data['image'],
                                     'price' => $data['price'],
                                 ]);
 
-        }
-        else{
-            return 'something went wrong!';
-        }
+        // }
+        // else{
+        //     return 'something went wrong!';
+        // }
 
         
     }
