@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-
         return Product::orderBy('id', 'desc')->paginate(10);
-
     }
 
     public function show($productId){
@@ -38,7 +36,7 @@ class ProductController extends Controller
             return 'something went wrong!';
         }
 
-        
+
     }
 
     public function edit($slug){
