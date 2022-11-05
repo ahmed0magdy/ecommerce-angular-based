@@ -50,33 +50,21 @@ submitForm()
      formData.append('SKU', this.form.controls['SKU'].value);
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
+     formData.append('_METHOD', 'POST');
      console.log(formData);
-     this.myService.AddProd(formData).subscribe();
+
+     this.myService.AddProd(formData).subscribe(
+      (data:any)=>{
+        window.location.href="/admin";
+      }
+     );
+
+      // window.location.href="/admin";
 
 }
 
 
 
 
-  AddProductForm = new FormGroup({
-    title: new FormControl(""),
-    SKU: new FormControl("",[Validators.required,Validators.maxLength(8),Validators.minLength(0)]),
-    image:new FormControl(""),
-    price: new FormControl(0),
-    details: new FormControl("")
-  })
-  get SKUvalid(){
-    return this.AddProductForm.controls.SKU.valid
-  }
-  AddProd(){
-    if(this.AddProductForm.valid){
-      this.myService.AddProd(this.AddProductForm.value).subscribe();
-      alert("product is added")
-      window.location.href = "/admin"    
-    }else{
-    // alert("error");
-    }
 
-
-}
 }
