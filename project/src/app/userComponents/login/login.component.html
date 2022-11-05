@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -7,7 +8,7 @@
           <h6>please enter email & password</h6>
         </div>
         <form>
-          <form [formGroup]="login" (ngSubmit)="loginData(login)">
+          <form (formGroup)="login" (ngSubmit)="loginData(login)">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
               <input formControlName="email" #email type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
