@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div class="container mt-5 m-auto form w-50">
+<form [formGroup] = "form" (ngSubmit)="submitForm()" >
+  <h2 class="text-center mb-5">Add Product</h2>
+  <div class="m-3 form-group d-flex justify-content-center ">
+    <label class="mx-2">title: </label>
+    <input formControlName="title" type="text" class="form-control" />
+  </div>
+  <div class="m-3 form-group d-flex justify-content-center ">
+    <label class="mx-2">SKU: </label>
+    <input formControlName="SKU" type="text" class="form-control" />
+  </div>
+  <!-- <div *ngIf="!SKUvalid" id="emailHelp" class="mt-2 form-text">
+    <p class="alert alert-danger">SKU must be 8 chars</p>
+  </div> -->
+  <div class="m-2 form-group d-flex justify-content-center ">
+    <label class="mx-2">image: </label>
+    <input  type="file" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)" class="form-control" formControlName="icon">
+    <!-- <input formControlName="image" type="file" class="form-control" /> -->
+  </div>
+  <div class="m-2 form-group d-flex justify-content-center ">
+    <label class="mx-2">price: </label>
+    <input formControlName="price" type="text" class="form-control" />
+  </div>
+  <div class="m-2 form-group d-flex justify-content-center ">
+    <label class="mx-2">details: </label>
+    <input formControlName="details" type="text" class="form-control" />
+  </div>
+  <div class="form-group d-flex justify-content-center ">
+    <input type="submit" class="w-50 btn btn-success" value="Add" />
+  </div>
+
+</form>
+</div>

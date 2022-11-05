@@ -1,0 +1,21 @@
+
+<header class="container-fluid bg-dark">
+  <nav class="bg-dark p-3 container d-flex flex-row justify-content-around align-center">
+      <li><a style="text-decoration:none;" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/admin">Products</a></li>
+      <li><a style="text-decoration:none;" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/AddProducts">AddProducts</a></li>
+      
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          profile
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="login">login</a>
+          <a class="dropdown-item" routerLink="profile">profile</a>
+          <a class="dropdown-item" routerLink="signup"> register </a>
+        </div>
+      </div>
+
+
+  </nav>
+
+</header>
