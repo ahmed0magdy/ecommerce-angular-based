@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,12 @@ export class ServicesService {
 
 
 
-private url  = "http://localhost:8000/api/products"
+private url  = "http://localhost:8000/api/products";
+// public httpOption ={
+//   Headers: new HttpHeaders({
+//     'Accept':'application/json'
+//   })
+// };
 
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
@@ -26,7 +31,7 @@ AddProd(newProduct:any){
   return this.myClient.post(this.url,newProduct)
 }
 UpdateProd(updatePro:any,id:any){
-  return this.myClient.put(`${this.url}/${id}`,updatePro)
+  return this.myClient.post(`${this.url}/${id}`,updatePro) // not put 
 }
 Deleteprod(id:number){
   return this.myClient.delete(`${this.url}/${id}`)

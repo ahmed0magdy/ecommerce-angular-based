@@ -10,16 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AddProductsComponent implements OnInit {
 
-  form: FormGroup;
-  constructor(public fb: FormBuilder, public myService: ServicesService, private _route: Router) {
-    this.form = this.fb.group({
+  form :FormGroup;
+  constructor(public fb:FormBuilder,public myService: ServicesService,private _route:Router)
+   {
+      this.form = this.fb.group({
       title: '',
       SKU: '',
-      image: null,
+      image:null,
       price: 0,
       details: ''
     })
-  }
+   }
 
   ngOnInit(): void {
     // if(sessionStorage.getItem("Admin")){
@@ -31,46 +32,39 @@ export class AddProductsComponent implements OnInit {
 
     // }
   }
+ 
+
+uploadFile(event:Event){
+  const file = (event.target as HTMLInputElement)?.files?.[0];
+  this.form.patchValue({
+    image:file
+  });
+}
 
 
 submitForm()
 {
-  
   const formData :any= new FormData();
      formData.append('image', this.form.controls['image'].value);
      formData.append('title', this.form.controls['title'].value);
      formData.append('SKU', this.form.controls['SKU'].value);
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
+     formData.append('_METHOD', 'POST');
      console.log(formData);
-     this.myService.AddProd(formData).subscribe();
-     alert("product is added")
-      window.location.href = "/admin"    
+
+     this.myService.AddProd(formData).subscribe(
+      (data:any)=>{
+        window.location.href="/admin";
+      }
+     );
+
+      // window.location.href="/admin";
 
 }
 
 
 
 
-//   AddProductForm = new FormGroup({
-//     title: new FormControl(""),
-//     SKU: new FormControl("",[Validators.required,Validators.maxLength(8),Validators.minLength(0)]),
-//     image:new FormControl(""),
-//     price: new FormControl(0),
-//     details: new FormControl("")
-//   })
-//   get SKUvalid(){
-//     return this.AddProductForm.controls.SKU.valid
-//   }
-//   AddProd(){
-//     if(this.AddProductForm.valid){
-//       this.myService.AddProd(this.AddProductForm.value).subscribe();
-//       alert("product is added")
-//       window.location.href = "/admin"    
-//     }else{
-//     // alert("error");
-//     }
 
-
-// }
 }

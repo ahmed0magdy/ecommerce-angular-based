@@ -12,28 +12,31 @@ export class UpdateProductsComponent implements OnInit {
 
   imgsrc= 'http://localhost:8000/storage/images';
   form: FormGroup;
+  // SKU:any;title:any;image:any;price:any;details:any;
   myimage:any;
   constructor(public fb: FormBuilder, private myService:ServicesService,private route:ActivatedRoute) 
   {
-    this.form = this.fb.group({
-      title: null,
-      SKU: null,
-      image: null,
-      price: null,
-      details: null
-    })
-
-    this.myService.getByIdedit(this.route.snapshot.params['id']).subscribe((data:any)=>{
-      this.myimage =data['image'];
-      this.form = this.fb.group({
-        title: data['title'],
-        SKU: data['SKU'],
-        // slug: new FormControl(data['slug']),
-        image:data['image'],
-        price: data['price'],
-        details:data['details']
+         this.form = this.fb.group({
+           title: null,
+          SKU: null, 
+           price: null,
+          details: null,
+           image: null
       })
-    });
+
+    // this.myService.getByIdedit(this.route.snapshot.params['id']).subscribe((data:any)=>{
+    //   this.myimage =data['image'];
+    //   // this.form = this.fb.group({
+    //     this.title= data['title'],
+    //     this.SKU= data['SKU'],
+    //     // slug: new FormControl(data['slug']),
+    //     this.image=data['image'],
+    //    this.price= data['price'],
+    //     this.details=data['details']
+    //   // })
+    // });
+
+   
 
    }
 
@@ -48,18 +51,29 @@ export class UpdateProductsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.route.snapshot);
-    this.myService.getByIdedit(this.route.snapshot.params['id']).subscribe((data:any)=>{
-      this.myimage =data['image'];
-      this.form = new FormGroup({
-        title: data['title'],
-        SKU: data['SKU'],
-        // slug: new FormControl(data['slug']),
-        image:data['image'],
-        price: data['price'],
-        details:data['details']
-      })
+
+    this.myService.getByIdedit(this.route.snapshot.params['id']).subscribe(
+      (data:any)=>{
+            this.myimage =data['image'];
+
+            this.form = new FormGroup
+            ({
+                title:new FormControl( data['title']),
+                SKU: new FormControl(data['SKU']),
+                 image:new FormControl(data['image']),
+                price:new FormControl( data['price']),
+                details:new FormControl(data['details'])
+            })
     });
   }
+
+  uploadFile(event: Event) {
+    const file = (event.target as HTMLInputElement)?.files?.[0];
+    this.form.patchValue({
+      image: file
+    });
+  }
+
   Updatepro(){
 
     const formData: any = new FormData();
@@ -68,22 +82,19 @@ export class UpdateProductsComponent implements OnInit {
     formData.append('SKU', this.form.controls['SKU'].value);
     formData.append('details', this.form.controls['details'].value);
     formData.append('price', this.form.controls['price'].value);
-    
+    formData.append('_METHOD', 'PUT');
 
-    this.myService.UpdateProd(formData,this.route.snapshot.params['id']).subscribe((data)=>{
+    console.log(formData);
+    this.myService.UpdateProd(formData,this.route.snapshot.params['id']).subscribe
+    ((data)=>{
       console.log(data);
-      window.location.href="/admin";
+       window.location.href="/admin";
     })
   }
 
 
 
-  uploadFile(event: Event) {
-    const file = (event.target as HTMLInputElement)?.files?.[0];
-    this.form.patchValue({
-      image: file
-    });
-  }
+
 
 
 

@@ -15,32 +15,38 @@ class ProductController extends Controller
 
     public function show($productId){
 
-        return Product::find($productId);
+        return Product::find($productId); // Check this later
 
     }
 
-    public function store(Request $request){
-
-        // if ($image = $request->file('image'))
-        //  {
-        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $path = $request->file('image')->storeAs('public/images', $profileImage);
-            // $request->image = "$profileImage";
+    public function store(Request $request)
+    {
+        if ($image = $request->file('image'))
+         {
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('public/images', $profileImage);
+            $request->image = "$profileImage";
             $data = $request->all();
-            return Product::create([
-                                    'title' => $data['title'],
-                                    'SKU' => $data['SKU'],
-                                    'details' => $data['details'],
-                                    'image' =>$data['image'],
-                                    'price' => $data['price'],
-                                ]);
-
-        // }
-        // else{
-        //     return 'something went wrong!';
-        // }
-
-
+            return Product::create
+            ([
+                'title' => $data['title'],
+                'SKU' => $data['SKU'],
+                'details' => $data['details'],
+                 'image' =>$profileImage,
+                'price' => $data['price'],
+            ]);
+        }
+        else{
+            $data = $request->all();
+            return Product::create
+            ([
+                'title' => $data['title'],
+                'SKU' => $data['SKU'],
+                'details' => $data['details'],
+                // 'image' =>$profileImage,
+                'price' => $data['price'],
+            ]);
+        }
     }
 
     public function edit($slug){
@@ -51,11 +57,13 @@ class ProductController extends Controller
 
     public function update(Request $request,$sku ){
 
-
+        // return $request->all();
         // $postId = Product::find($sku);
-     $product = Product::where('SKU', $sku)->get()->first();
+        $product = Product::where('SKU', $sku)->get()->first();
 
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('image'))
+         {
+            Storage::delete('public/images/' . $product->image);
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $path = $request->file('image')->storeAs('public/images', $profileImage);
             // $request->image = "$profileImage";
@@ -68,7 +76,6 @@ class ProductController extends Controller
             'image' => $profileImage,
             'price' => $request->price
         ]);
-        Storage::delete('public/images/' . $request->image);
 
          }
         else{
@@ -78,6 +85,7 @@ class ProductController extends Controller
                 'details' => $request->details,
                 'price' => $request->price
         ]);
+        //  return dd($request);
         }
 
 
