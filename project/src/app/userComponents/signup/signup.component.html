@@ -7,7 +7,7 @@
           <h6>Register Yourself!</h6>
         </div>
         <form>
-          <form [formGroup]="signup" (ngSubmit)="signupData(signup)">
+          <form (ormGroup)="signup" (ngSubmit)="signupData(signup)">
             <div class="mb-3">
               <label for="exampleInputName1" class="form-label">Your Name</label>
               <input formControlName="name" #name type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp">
