@@ -10,7 +10,8 @@ export class ServicesService {
 
 
 private url  = "http://localhost:8000/api/products"
-
+private login  = "http://localhost:8000/api/login"
+private signup = "http://127.0.0.1:8000/api/signup/"
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
@@ -26,5 +27,19 @@ UpdateProd(updatePro:any,id:any){
 }
 Deleteprod(id:number){
   return this.myClient.delete(`${this.url}/${id}`)
+}
+
+
+addUser(newUser:any){
+  return this.myClient.post(this.signup,newUser)
+}
+userLogin(newUser:any){
+  return this.myClient.post(this.login,newUser)
+}
+getAllUsers(){
+  return this.myClient.get(this.signup)
+}
+getUserById(Id :any){
+  return this.myClient.get(`${this.signup}/${Id}`)
 }
 }

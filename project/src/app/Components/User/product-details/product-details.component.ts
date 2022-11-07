@@ -15,9 +15,9 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private myserv:ServicesService ,private myactivrout:ActivatedRoute) 
   {
     this.id=myactivrout.snapshot.params['id'];
-     this.myserv.getByIdshow(this.id).subscribe(
-      (data)=> this.singleProduct =data
-     );
+    //  this.myserv.getByIdshow(this.id).subscribe(
+    //  (data)=> this.singleProduct =data
+     //);
 
    }
 
