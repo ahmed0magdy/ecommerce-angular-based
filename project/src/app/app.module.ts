@@ -20,6 +20,8 @@ import { LoginComponent } from './userComponents/login/login.component';
 import { SignupComponent } from './userComponents/signup/signup.component';
 import { UsersService } from './services/users.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { OrdersComponent } from './Components/Admin/orders/orders.component';
+import { OrderProductComponent } from './Components/Admin/order-product/order-product.component';
 
 
 
@@ -38,6 +40,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductItemComponent,
     LoginComponent,
     SignupComponent,
+    OrdersComponent,
+    OrderProductComponent,
     
   ],
   imports: [
