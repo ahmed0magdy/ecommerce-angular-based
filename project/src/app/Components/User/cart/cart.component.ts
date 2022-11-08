@@ -115,15 +115,13 @@ export class CartComponent implements OnInit {
         this.myserv.insertOrder(finalData).subscribe(
           (data:any)=>{
             
-            // console.log('hello data  '+data)
-            // window.location.href="/admin";
+            //  console.log('hello data  '+data)
+             localStorage.clear();
+              window.location.href="/";
+              
           }
          );
 
-
-      // console.log(finalData)
-      // alert('your order has been completed!')
-      window.location.href='/'
     }
    
   }

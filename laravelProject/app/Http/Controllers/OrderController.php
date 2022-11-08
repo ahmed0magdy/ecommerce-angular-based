@@ -53,8 +53,7 @@ class OrderController extends Controller
 
              $last_id=$order->id;
 
-             
-
+            
              foreach($data['order'] as $item)
              {
                 $orderdetails = new Order_Product;
