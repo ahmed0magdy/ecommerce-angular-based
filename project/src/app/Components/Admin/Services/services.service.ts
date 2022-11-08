@@ -10,6 +10,8 @@ export class ServicesService {
 
 
 private url  = "http://localhost:8000/api/products"
+private signup  = "http://localhost:8000/api/signup"
+private login  = "http://localhost:8000/api/login"
 
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
