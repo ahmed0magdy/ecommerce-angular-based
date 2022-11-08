@@ -17,11 +17,21 @@
         <td>{{o.name}}</td>
         <td>{{o.email}}</td>
         <td>
-            <select name="status" class="form-control" id="">
-                <option value="" selected>
-                    {{o.status}}
+            <!---->
+            <form  [formGroup]="form"> 
+            <select (change)="UpdateOrder(o.id)" formControlName="status" class="form-control" id="">
+                <option [selected]="o.status=='pending'" value="pending">
+                    pending
+                </option>
+                <option [selected]="o.status=='approved'" value="approved">
+                    approved
+                </option>
+                <option [selected]="o.status=='rejected'" value="rejected">
+                   Rejected
                 </option>
             </select>
+            <!-- <button type="submit" class="btn btn-secondary">Click</button> -->
+        </form>
         </td>
         <td>total</td>
         <td><a class="btn btn-outline-primary" 

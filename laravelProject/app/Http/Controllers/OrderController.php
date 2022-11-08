@@ -41,10 +41,10 @@ class OrderController extends Controller
         //     foreach($data['order'] as $item)
         //       {
         //         $mydata =$item['productId'];
-                  
+
         //     }
         //    return $mydata;
-        
+
              $order = new Order;
              $order->total = $data['finaltotal'];
              $order->user_id =$data['user_id'];
@@ -53,7 +53,7 @@ class OrderController extends Controller
 
              $last_id=$order->id;
 
-            
+
              foreach($data['order'] as $item)
              {
                 $orderdetails = new Order_Product;
@@ -63,8 +63,8 @@ class OrderController extends Controller
                 $orderdetails->totaleach =$item['totalPrice'];
                 $orderdetails->save();
              }
-            
+
             return  $order;
-            
+
     }
 }

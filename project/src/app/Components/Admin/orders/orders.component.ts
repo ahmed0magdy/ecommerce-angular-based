@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../Services/services.service';
 
@@ -10,7 +10,13 @@ import { ServicesService } from '../Services/services.service';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute ,private myservice:ServicesService) { }
+  constructor(public fb:FormBuilder,private route:ActivatedRoute ,private myservice:ServicesService) { 
+    this.form = this.fb.group({
+   
+      status: ''
+    })
+  }
+  status:any;
   orders:any;
   form: FormGroup;
   ngOnInit(): void {
@@ -20,16 +26,24 @@ export class OrdersComponent implements OnInit {
       console.log(data);
     })
   }
- 
-  UpdateOrder(){
-    const formData: any = new FormData();
-    formData.append('status', this.form.controls['status'].value);
-    console.log(formData);
-    this.myservice.UpdateOrder(formData,this.route.snapshot.params['id']).subscribe
-    ((data)=>{
+  
+  // updatedata(value:any){
+  //   let body = {
+  //     status: value.status
+  //   }
+  //   this.myservice.UpdateOrder()
+  // }
+
+
+    UpdateOrder(id:any){
+     const form: any = new FormData();
+     form.append('status', this.form.controls['status'].value);
+      console.log(form);
+       form.append('_METHOD', 'PUT');
+     this.myservice.UpdateOrder(form,id).subscribe((data)=>{
       console.log(data);
-       window.location.href="/admin";
-    })
-  }
+      //  window.location.href="/order";
+      })
+    }
 
 }
