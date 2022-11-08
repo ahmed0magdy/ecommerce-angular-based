@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('SKU',8)->unique();
+            $table->string('SKU',10)->unique();
             $table->longText('details');
             $table->longText('image');
             $table->float('price');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

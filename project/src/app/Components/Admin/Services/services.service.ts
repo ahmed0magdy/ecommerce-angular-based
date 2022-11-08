@@ -15,7 +15,18 @@ private url  = "http://localhost:8000/api/products";
 //     'Accept':'application/json'
 //   })
 // };
+private orders = "http://localhost:8000/api/orders"
 
+getAllOrders(){
+  return this.myClient.get(this.orders)
+}
+getByOrderId(id:any){
+  return this.myClient.get(`${this.orders}/${id}`)
+
+}
+UpdateOrder(updateorder:any,id:any){
+  return this.myClient.post(`${this.orders}/${id}`,updateorder) // not put 
+}
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
