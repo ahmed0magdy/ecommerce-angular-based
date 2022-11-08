@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
     console.log(this.title.toLocaleLowerCase())
   }
   addtocart(event:any){
+
     if("cart" in localStorage)
     {
       this.productsInCart=JSON.parse(localStorage.getItem("cart")!); // updated array -- ! to escape null

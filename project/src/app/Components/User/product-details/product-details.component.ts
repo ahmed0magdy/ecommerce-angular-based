@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServicesService } from '../../Admin/Services/services.service';
 
@@ -12,6 +12,11 @@ export class ProductDetailsComponent implements OnInit {
   singleProduct:any;
   id:any;
   imgsrc= 'http://localhost:8000/storage/images';
+
+  quantity:number=1;
+  // @Input() product:any={};
+  @Output() item=new EventEmitter()
+
   constructor(private myserv:ServicesService ,private myactivrout:ActivatedRoute) 
   {
     this.id=myactivrout.snapshot.params['id'];
@@ -24,4 +29,9 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Addtocart()
+  {
+    this.singleProduct.quanity=this.quantity;
+    this.item.emit(this.singleProduct);
+  }
 }

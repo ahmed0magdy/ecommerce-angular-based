@@ -35,7 +35,7 @@ class ProductController extends Controller
                 'title' => $data['title'],
                 'SKU' => $data['SKU'],
                 'details' => $data['details'],
-                 'image' =>$profileImage,
+                'image' =>$profileImage,
                 'price' => $data['price'],
             ]);
         }
@@ -59,10 +59,9 @@ class ProductController extends Controller
 
     }
 
-    public function update(Request $request,$sku ){
+    public function update(Request $request,$sku )
+    {
 
-        // return $request->all();
-        // $postId = Product::find($sku);
         $product = Product::where('SKU', $sku)->get()->first();
 
         if ($image = $request->file('image'))

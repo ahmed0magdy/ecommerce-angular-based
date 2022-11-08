@@ -21,7 +21,7 @@ return new class extends Migration
             $table->longText('details');
             $table->longText('image');
             $table->float('price');
-            $table->integer('quantity');
+            // $table->integer('quantity');
             $table->timestamps();
         });
     }

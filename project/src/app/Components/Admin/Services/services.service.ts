@@ -27,6 +27,11 @@ getByOrderId(id:any){
 UpdateOrder(updateorder:any,id:any){
   return this.myClient.post(`${this.orders}/${id}`,updateorder) // not put 
 }
+
+insertOrder(order:any){
+  return this.myClient.post(this.orders,order) 
+}
+
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
