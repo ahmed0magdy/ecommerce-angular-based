@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Product_Order;
+use App\Models\Order_Product;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -32,5 +33,38 @@ class OrderController extends Controller
         ]);
 
         return $omega;
+    }
+
+    public function store(Request $request){
+             $data = $request->all();
+            //  $mydata =$data['order'][0];
+        //     foreach($data['order'] as $item)
+        //       {
+        //         $mydata =$item['productId'];
+                  
+        //     }
+        //    return $mydata;
+        
+             $order = new Order;
+             $order->total = $data['finaltotal'];
+             $order->user_id =$data['user_id'];
+             $order->status ='Pending';
+             $order->save();
+
+             $last_id=$order->id;
+
+            
+             foreach($data['order'] as $item)
+             {
+                $orderdetails = new Order_Product;
+                $orderdetails->order_id=$last_id;
+                $orderdetails->product_id =$item['productId'];
+                $orderdetails->qty =$item['quantity'];
+                $orderdetails->totaleach =$item['totalPrice'];
+                $orderdetails->save();
+             }
+            
+            return  $order;
+            
     }
 }

@@ -50,7 +50,7 @@ submitForm()
      formData.append('SKU', this.form.controls['SKU'].value);
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
-     formData.append('_METHOD', 'POST');
+    //  formData.append('_METHOD', 'POST');
      console.log(formData);
 
      this.myService.AddProd(formData).subscribe(

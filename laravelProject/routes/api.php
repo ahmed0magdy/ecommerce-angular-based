@@ -23,10 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("orders",[OrderController::class,'order']);
 Route::get("orders/{order}",[OrderController::class,'orderview']);
 Route::post("orders/{order}",[OrderController::class,'updatestatus']);
+Route::post("orders",[OrderController::class,'store']);
+
+
 Route::post("/signup", [UserController::class, 'registerNewUser']);
 Route::post("/login", [UserController::class, 'login']);
 Route::get("/signup", [UserController::class, 'getDataUser']);
 Route::get("/signup/{id}", [UserController::class, 'getDataUserId']);
+
 
 
 Route::get("products",[ProductController::class,'index']);
