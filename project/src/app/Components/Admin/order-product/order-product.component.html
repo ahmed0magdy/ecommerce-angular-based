@@ -14,12 +14,13 @@
     <tr *ngFor="let o of singleorder">
         <td>{{o.order_id}}</td>
         <td>{{o.title}}</td>
-        <td>{{o.qty}}</td>
+        <td>{{o.quant}}</td>
         <td>{{o.price}}</td>
-        <td class="text-primary">{{o.qty * o.price}}</td>
+        <td class="text-primary">{{o.totaled}}</td>
     </tr> 
     <tr class="table-danger">
         <td colspan="4">Total</td>
+        <td>{{totalty}}</td>
     </tr>
 </tbody>
 </table>

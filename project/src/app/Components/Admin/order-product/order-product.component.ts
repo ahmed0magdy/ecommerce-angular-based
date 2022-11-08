@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../Services/services.service';
 
@@ -10,16 +10,18 @@ import { ServicesService } from '../Services/services.service';
 export class OrderProductComponent implements OnInit {
   id:any;
   singleorder:any;
-  total:number;
+  totalty = 0;
+  private value;
+  @Output() myEvent = new EventEmitter;
   constructor(private myactivated:ActivatedRoute,private myservice:ServicesService, route:Router) {
     
     console.log(myactivated.snapshot.params['id']);
     this.id=myactivated.snapshot.params['id'];
     this.myservice.getByOrderId(this.id).subscribe(
       (data)=> {this.singleorder =data
-        console.log(this.singleorder);
-        this.totals();
-        
+           this.findsum(this.singleorder);
+         console.log(this.singleorder);
+        //  console.log(this.findsum(data));
       }
       );
       
@@ -29,9 +31,14 @@ export class OrderProductComponent implements OnInit {
     ngOnInit(): void {
       
     }
-     totals(){
-    
-    
-    }
+    findsum(data){    
+       this.value=data    
+       console.log(this.value);  
+       for(let j=0;j<data.length;j++){   
+            this.totalty+= this.value[j].totaled  
+            console.log(this.totalty)  
+       }  
+       
+    }  
 }
   

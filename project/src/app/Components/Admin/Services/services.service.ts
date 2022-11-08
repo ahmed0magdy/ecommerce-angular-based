@@ -9,14 +9,10 @@ export class ServicesService {
 
 
 
-
-private url  = "http://localhost:8000/api/products";
-// public httpOption ={
-//   Headers: new HttpHeaders({
-//     'Accept':'application/json'
-//   })
-// };
 private orders = "http://localhost:8000/api/orders"
+private url  = "http://localhost:8000/api/products"
+private signup  = "http://localhost:8000/api/signup"
+private login  = "http://localhost:8000/api/login"
 
 getAllOrders(){
   return this.myClient.get(this.orders)
@@ -33,9 +29,6 @@ insertOrder(order:any){
   return this.myClient.post(this.orders,order) 
 }
 
-private url  = "http://localhost:8000/api/products"
-private signup  = "http://localhost:8000/api/signup"
-private login  = "http://localhost:8000/api/login"
 
 
 getAllProducts(page:number){
