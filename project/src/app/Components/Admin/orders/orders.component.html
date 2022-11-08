@@ -7,7 +7,7 @@
         <th>username</th>
         <th>email</th>
         <th>status</th>
-        <th>total price</th>
+        <th>total</th>
         <th>Action</th>
     </tr>
 </thead>
@@ -17,15 +17,13 @@
         <td>{{o.name}}</td>
         <td>{{o.email}}</td>
         <td>
-            <form [formGroup]="form" (ngSubmit)="UpdateOrder()">
-             <select formControlName="status" id="">
-                <option value="pending">pending</option>
-                <option value="Approved">Approved</option>
-                <option value="Rejected">Rejected</option>
-             </select>
-            </form>
+            <select name="status" class="form-control" id="">
+                <option value="" selected>
+                    {{o.status}}
+                </option>
+            </select>
         </td>
-        <td>{{o.total}}</td>
+        <td>total</td>
         <td><a class="btn btn-outline-primary" 
             routerLink="{{o.id}}">
             Order Details

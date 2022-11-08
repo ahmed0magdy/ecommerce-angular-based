@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit {
       console.log(data);
     })
   }
-
+ 
   UpdateOrder(){
     const formData: any = new FormData();
     formData.append('status', this.form.controls['status'].value);
