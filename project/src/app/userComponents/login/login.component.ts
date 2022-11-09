@@ -29,8 +29,12 @@ export class LoginComponent implements OnInit {
     this.LoggedInAdmin = localStorage.getItem("UserId")
     if(this.LoggedInAdmin){
         window.location.href = '/';
-    
-    }
+        
+      }
+      if(this.LoggedInAdmin == 5){
+        window.location.href ="/admin";
+      }
+    console.log(this.LoggedInAdmin)
   }
 
   // loginData(login:FormGroup){
