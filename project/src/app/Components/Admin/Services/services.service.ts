@@ -13,6 +13,7 @@ private orders = "http://localhost:8000/api/orders"
 private url  = "http://localhost:8000/api/products"
 private signup  = "http://localhost:8000/api/signup"
 private login  = "http://localhost:8000/api/login"
+private logout  = "http://localhost:8000/api/logout"
 private profile  = "http://localhost:8000/api/profiles"
 
 getAllOrders(){
@@ -60,6 +61,9 @@ addUser(newUser:any){
 userLogin(newUser:any){
   return this.myClient.post(this.login,newUser)
 }
+// userLogout( httpOptions:any ){
+//   return this.myClient.delete(this.logout, httpOptions)  //-------------->>>>>>> >> a3mel eh 
+// }
 getAllUsers(){
   return this.myClient.get(this.signup)
 }

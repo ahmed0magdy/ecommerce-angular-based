@@ -16,11 +16,11 @@ export class ProductsComponent implements OnInit {
   page:number = 1;
   total:number = 0;
   ngOnInit(): void {
-    // if(sessionStorage.getItem("userEmail")){
+    // if(localStorage.getItem("user")){
     //   // alert("welcome "+sessionStorage.getItem("userEmail"));
     // }
     // else{
-    //   this._route.navigate(['']);
+    //   window.location.href = "/";
     // }
     this.getProducts();
     // if(sessionStorage.getItem("Admin")){

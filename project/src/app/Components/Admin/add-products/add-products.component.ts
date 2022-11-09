@@ -23,12 +23,12 @@ export class AddProductsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // if(sessionStorage.getItem("Admin")){
+    // if(localStorage.getItem("admin")){
     //   // alert("welcome "+sessionStorage.getItem("Admin"));
     // }
     // else{
     //   alert("you are not an Authorized");
-    //   this._route.navigate(['']);
+    //   window.location.href = "/";
 
     // }
   }

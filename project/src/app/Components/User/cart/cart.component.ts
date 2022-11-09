@@ -16,13 +16,15 @@ export class CartComponent implements OnInit {
   constructor(private myserv:ServicesService,private _route:Router) { }
 
   ngOnInit(): void {
-    // if(sessionStorage.getItem("userEmail")){
-    //   // alert("welcome "+sessionStorage.getItem("userEmail"));
-    // }
-    // else{
-    //   alert("please logged in ....");
-    //   this._route.navigate(['/login']);
-    // }
+    if(localStorage.getItem("token")){
+      // alert("welcome "+sessionStorage.getItem("userEmail"));
+    }
+    else{
+      alert("please logged in ....");
+      window.location.href = "/login";
+    }
+
+
     this.listItemstocart()
     this.getTotal()
   }

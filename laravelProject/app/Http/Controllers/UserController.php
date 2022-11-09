@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use  App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,15 +22,7 @@ class UserController extends Controller
             'password' => Hash::make(request()->password),
         ]);
         return $newUser;
-    //     if ($newUser) {
-    //         event(new Registered($newUser));
-    //         $newUser["Please complete the validation"] = "An Email has been sent to your mail, Please verify your mail";
-    //         return $newUser;
-    // }else
-    // {
-    //     return response()
-    //             ->json(['message' => 'An error ocurred while registering your information!']);
-    // }
+
     }
     public function login(Request $request){
 
@@ -41,13 +34,38 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+            return response()->json /*ValidationException::withMessages*/([
+                'content' => 'The provided credentials are incorrect.',
+            ],404);
         }
         else{
-           return  [$user->createToken($request->email)->plainTextToken,$user];
+
+            if($request->email == 'admin@gmail.com' && Hash::check($request->password, '123456789')){
+                $userType = 'admin';
+                return response()->json
+                (['token' => $user->createToken($request->email)->plainTextToken,
+                'data'=> $user,
+                'userType' => $userType
+                 ]);
+            }
+           $userType = 'user';
+           return response()->json
+           (['token' => $user->createToken($request->email)->plainTextToken,
+           'data'=> $user,
+            'userType' => $userType,
+           ]);
+
+
         }
+
+    }
+    public function logout(Request $request){
+    $request -> user()-> tokens()-> delete();
+    return response()->json(
+        [
+            'message' => 'user logged out'
+        ],200
+    );
 
     }
 
@@ -58,5 +76,6 @@ class UserController extends Controller
     public function getDataUserId($Id){
         $user = User::find($Id);
     }
+
 
 }

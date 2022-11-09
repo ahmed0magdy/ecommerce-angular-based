@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import{FormGroup, FormControl,Validators,FormBuilder} from "@angular/forms";
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
+import { NgIfContext } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { data } from 'jquery';
 export class LoginComponent implements OnInit {
 
   UserId=0;
+ 
   constructor(private _route:Router , public myService: ServicesService , public fb:FormBuilder, private _myActivate : ActivatedRoute  ) {
     this.UserId= _myActivate.snapshot.params["id"];
   }
@@ -63,10 +65,12 @@ export class LoginComponent implements OnInit {
 
 
   //     }
+
   UserForm = new FormGroup ({
     "email": new FormControl('',/*[Validators.email, Validators.required]*/),
     "password": new FormControl('', /*[Validators.minLength(7),Validators.maxLength(20),Validators.required]*/),
   })
+  
   loginData(){
         console.log(this.UserForm);
         if(this.UserForm.valid){
@@ -74,12 +78,32 @@ export class LoginComponent implements OnInit {
             {
               next(data){
               console.log(data);
-              console.log(data.valueOf['name']); //error       
+              console.log(data['data']['id']); // fetch id of user  
+                
+                if(data['userType']== "admin")
+                {
+                  sessionStorage.setItem("Admin", 'admin' );
+                  alert('you are successfully login as Admin');
+                
+              
+                  window.location.href = "/AddProducts";
+                  this.login.reset();
+                } 
+                else
+                {
+                  localStorage.setItem('token', data['token']);
+                  localStorage.setItem('UserId', data['data']['id']);
+                  alert('you are successfully login ' + data['data']['name']);
+                  window.location.href = "/";
+                  this.login.reset();
+                }
+               
             },
             error(err)
             {
-              alert("something is wrong .!!");
+              alert("user not found !! ");
               console.log(err);
+              window.location.href = "/signup "  ; 
             }
           }
     
