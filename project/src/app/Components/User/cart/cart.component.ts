@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit {
   total:any=0;
   imgsrc= 'http://localhost:8000/storage/images';
 
-  constructor(private _route:Router) { }
+  constructor(private myserv:ServicesService,private _route:Router) { }
 
   ngOnInit(): void {
     if(localStorage.getItem("token")){
@@ -105,16 +106,24 @@ export class CartComponent implements OnInit {
   
       let finalData=
       {
-        userEmail:sessionStorage.getItem('userEmail'),
-        date: new Date(),
-        order:order,
+        // user_id:sessionStorage.getItem('user_id'),
+        user_id:1,
+        // date: new Date(),
+         order:order,
         finaltotal:this.total
       }
       localStorage.setItem("checkout",JSON.stringify(finalData));
+        // insert into tables
+        this.myserv.insertOrder(finalData).subscribe(
+          (data:any)=>{
+            
+            //  console.log('hello data  '+data)
+             localStorage.clear();
+              window.location.href="/profiles";
+              
+          }
+         );
 
-      // console.log(finalData)
-      alert('your order has been completed!')
-      window.location.href='/'
     }
    
   }

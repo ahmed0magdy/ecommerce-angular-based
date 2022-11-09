@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
-            $table->string('SKU',10)->unique();
-            $table->longText('details');
-            $table->longText('image');
-            $table->float('price');
-            // $table->integer('quantity');
+            $table->unsignedBigInteger('user_id');
+            $table->enum('status',[
+                'pending',
+                'approved',
+                'rejected'
+            ])->default('pending');
+            $table->integer('total');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('_order');
     }
 };

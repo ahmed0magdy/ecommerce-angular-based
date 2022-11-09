@@ -24,6 +24,7 @@
     "datatables.net": "^1.12.1",
     "datatables.net-dt": "^1.12.1",
     "font-awesome": "^4.7.0",
+    "http-headers": "^3.0.2",
     "jquery": "^3.6.1",
     "ngx-pagination": "^6.0.2",
     "ngx-toastr": "^15.2.1",

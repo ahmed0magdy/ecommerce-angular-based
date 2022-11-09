@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product_Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+   
     public function index(){
         return Product::orderBy('id', 'desc')->paginate(10);
     }
@@ -30,7 +35,7 @@ class ProductController extends Controller
                 'title' => $data['title'],
                 'SKU' => $data['SKU'],
                 'details' => $data['details'],
-                 'image' =>$profileImage,
+                'image' =>$profileImage,
                 'price' => $data['price'],
             ]);
         }
@@ -54,10 +59,9 @@ class ProductController extends Controller
 
     }
 
-    public function update(Request $request,$sku ){
+    public function update(Request $request,$sku )
+    {
 
-        // return $request->all();
-        // $postId = Product::find($sku);
         $product = Product::where('SKU', $sku)->get()->first();
 
         if ($image = $request->file('image'))
