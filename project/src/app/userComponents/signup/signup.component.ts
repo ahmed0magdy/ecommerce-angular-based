@@ -28,17 +28,17 @@ export class SignupComponent implements OnInit {
           })
       }
 
-  signupUser:any;
+  // signupUser:any;
 
   ngOnInit(): void {
    
   }
  
   AddUserForm = new FormGroup ({
-    "name": new FormControl('', /*[Validators.required, Validators.minLength(3)]*/),
+    "name": new FormControl('',/* [Validators.required, Validators.minLength(3)]*/), 
     "email": new FormControl('',/*[Validators.email, Validators.required]*/),
-    "password": new FormControl('', /*[Validators.minLength(7),Validators.maxLength(20),Validators.required]*/),
-    "password_confirmation": new FormControl('',/*[Validators.required]*/),
+    "password": new FormControl('',/* [Validators.min(7),Validators.max(20),Validators.required]*/),
+    "password_confirmation": new FormControl('',/*Validators.required*/),
     "gender": new FormControl()
   });
 
@@ -68,7 +68,7 @@ export class SignupComponent implements OnInit {
 
   addUser(){
     console.log(this.signup);
-    if(this.AddUserForm.valid){
+    // if(this.AddUserForm.valid){
       this.myService.addUser(this.signup.value).subscribe(
        {
         next(data){
@@ -83,11 +83,9 @@ export class SignupComponent implements OnInit {
        }
 
       )
-    }
-
-
   }
   get ValidName(){
+    // return this.signup.value.name.validdata['image']
     return this.AddUserForm.controls.name.valid
   }
   get ValidEmail(){

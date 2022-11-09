@@ -20,10 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::post("/signup", [UserController::class, 'registerNewUser']);
 Route::post("/login", [UserController::class, 'login']);
+// Route::get("/logout", [UserController::class, 'logout']);
 Route::get("/signup", [UserController::class, 'getDataUser']);
 Route::get("/signup/{id}", [UserController::class, 'getDataUserId']);
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::delete('logout',   [UserController::class, 'logout']);
+  });
 
 
 Route::get("products",[ProductController::class,'index']);

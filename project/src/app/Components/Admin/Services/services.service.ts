@@ -10,7 +10,9 @@ export class ServicesService {
 
 
 private url  = "http://localhost:8000/api/products"
-
+private signup  = "http://localhost:8000/api/signup"
+private login  = "http://localhost:8000/api/login"
+private logout  = "http://localhost:8000/api/logout"
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
@@ -39,6 +41,9 @@ addUser(newUser:any){
 userLogin(newUser:any){
   return this.myClient.post(this.login,newUser)
 }
+// userLogout( httpOptions:any ){
+//   return this.myClient.delete(this.logout, httpOptions)  //-------------->>>>>>> >> a3mel eh 
+// }
 getAllUsers(){
   return this.myClient.get(this.signup)
 }
