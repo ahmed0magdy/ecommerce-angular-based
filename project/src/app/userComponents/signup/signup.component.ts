@@ -13,6 +13,7 @@ import { data } from 'jquery';
 export class SignupComponent implements OnInit {
 
   signup:FormGroup|any;
+  LoggedInAdmin: any;
 
   constructor(
               public fb:FormBuilder , private _route:Router ,
@@ -31,6 +32,11 @@ export class SignupComponent implements OnInit {
   // signupUser:any;
 
   ngOnInit(): void {
+    this.LoggedInAdmin = localStorage.getItem("UserId")
+    if(this.LoggedInAdmin){
+        window.location.href = '/';
+    
+    }
    
   }
  

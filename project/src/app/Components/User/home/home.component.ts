@@ -7,6 +7,7 @@ import { ServicesService } from '../../Admin/Services/services.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  LoggedInAdmin: any;
 
   constructor(private myserv:ServicesService) { }
 
@@ -21,7 +22,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
      this.getdata();
-
+     this.LoggedInAdmin = localStorage.getItem("UserId")
+     if(!this.LoggedInAdmin){
+         window.location.href = '/login';
+     
+     }
  
 
     //  this.getuser()

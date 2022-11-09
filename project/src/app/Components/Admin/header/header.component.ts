@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor( private _route:Router ) { }
 
   ngOnInit(): void {
-
+    
   }
  
  

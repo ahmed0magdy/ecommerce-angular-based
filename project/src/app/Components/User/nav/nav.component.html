@@ -9,14 +9,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
+          <li  class="nav-item">
+            <a class="nav-link" *ngIf="flag" href="/admin">Admin</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/cart" tabindex="-1" >Cart</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="/profiles" tabindex="-1" >Profile</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,9 +25,9 @@
              
               <!-- <li class="nav-item "><a class="nav-link" href="#"><span class="fas fas-shopping-cart"></span><span class="text">Cart</span></a> </li> -->
               <li><a class="dropdown-item" href="/signup" *ngIf="!isLoggedIn">signup</a></li>
-              <li><a href=""  class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> logout</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#"> profile </a></li>
+              <li><a *ngIf="isLoggedIn && !flag" class="dropdown-item" href="/profiles"> profile </a></li>
+              <li><a href=""  class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> logout</a></li>
             </ul>
           </li>
         </ul>

@@ -13,6 +13,7 @@ import { NgIfContext } from '@angular/common';
 export class LoginComponent implements OnInit {
 
   UserId=0;
+  LoggedInAdmin: any;
  
   constructor(private _route:Router , public myService: ServicesService , public fb:FormBuilder, private _myActivate : ActivatedRoute  ) {
     this.UserId= _myActivate.snapshot.params["id"];
@@ -25,6 +26,11 @@ export class LoginComponent implements OnInit {
       "email": new FormControl( '',[Validators.required, Validators.email]),
       "password": new FormControl('', [Validators.required, Validators.minLength(7)])
     })
+    this.LoggedInAdmin = localStorage.getItem("UserId")
+    if(this.LoggedInAdmin){
+        window.location.href = '/';
+    
+    }
   }
 
   // loginData(login:FormGroup){
@@ -82,7 +88,7 @@ export class LoginComponent implements OnInit {
                 
                 if(data['userType']== "admin")
                 {
-                  sessionStorage.setItem("Admin", 'admin' );
+                  localStorage.setItem("Admin", 'admin' );
                   alert('you are successfully login as Admin');
                 
               
