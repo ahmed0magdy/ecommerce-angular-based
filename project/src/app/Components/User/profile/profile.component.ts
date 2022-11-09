@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private myservice:ServicesService,activatedroute:ActivatedRoute) { }
   profile:any;
-  id:any = 1;
+  id = localStorage.getItem('UserId') ;
   orders:any[]=[];
   ngOnInit(): void {
     this.myservice.getByProfileId(this.id).subscribe((data)=>{

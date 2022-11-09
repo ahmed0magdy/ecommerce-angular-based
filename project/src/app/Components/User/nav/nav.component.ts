@@ -10,11 +10,20 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class NavComponent implements OnInit {
 isLoggedIn: any;
+LoggedInAdmin:any;
+flag = false;
 
-  constructor(private _route:Router, public myService: ServicesService ) { }
+  constructor(private _route:Router, public myService: ServicesService ) {   }
 
   ngOnInit(): void {
+    this.LoggedInAdmin = localStorage.getItem("UserId")
     this.isLoggedIn = localStorage.getItem("token");
+    if(this.LoggedInAdmin==5){
+      this.flag = true; //admin 
+    }
+    // if(!this.LoggedInAdmin){
+    //     window.location.href = '/';
+    // }
   }
 
   // logout(){
@@ -25,7 +34,8 @@ isLoggedIn: any;
   
     localStorage.removeItem("token");
     localStorage.removeItem("UserId");
-    console.log("222200");
+    // console.log("222200");
+    window.location.href= "/login"
   } 
 
     //     // window.location.href = "/"; 
