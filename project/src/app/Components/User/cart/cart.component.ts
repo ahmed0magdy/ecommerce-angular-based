@@ -117,7 +117,7 @@ export class CartComponent implements OnInit {
             
             //  console.log('hello data  '+data)
              localStorage.clear();
-              window.location.href="/";
+              window.location.href="/profiles";
               
           }
          );

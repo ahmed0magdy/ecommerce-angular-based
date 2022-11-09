@@ -1,0 +1,59 @@
+<table class="mb-5 w-100 mt-5 table table-bordered table-hover table-striped text-center">
+   <thead>
+         <tr class="bg-dark text-primary">
+            <td>name</td>
+            <td>email</td>
+            <td>address</td>
+            <td>phone</td>
+            <td>action</td>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+   <td>{{profile[0].name}}</td> 
+   <td>{{profile[0].email}}</td> 
+   <td>{{profile[0].address}}</td> 
+   <td>{{profile[0].phone}}</td>
+   <td><a class="btn btn-success" href="/profiles/edit/{{profile[0].userId}}">Edit</a></td> 
+   </tr>
+</tbody>
+</table>
+
+<table class="w-100 mt-5 table table-bordered table-hover table-striped text-center">
+   <thead>
+      <tr class="bg-dark text-primary">
+      <td>order_id</td>
+      <td>total</td>
+      <td>status</td>
+      <td>Order Date</td>
+      <td>Action</td>
+      
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+   <td>{{profile[0].orderId}}</td> 
+   <td>{{profile[0].total}}</td> 
+   <td>{{profile[0].status}} </td>
+   <td>{{profile[0].orderDate}} </td>
+   <td><a *ngIf="profile[0].orderId" (click)="DeleteOrder(profile[0].orderId)" class="btn btn-danger">Delete</a> </td>
+   
+   </tr>
+   </tbody>
+</table>
+<table class="w-100 mt-5 table table-bordered table-hover table-striped text-center">
+   <thead>
+      <tr class="bg-dark text-primary">
+         <td>title</td>
+         <td>price</td>
+         <td>qty</td>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let p of profile">
+   <td>{{p.title}}</td> 
+   <td>{{p.price}}</td> 
+   <td>{{p.qty}} </td>
+   </tr>
+   </tbody>
+</table> 

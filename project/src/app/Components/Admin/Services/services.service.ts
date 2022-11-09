@@ -13,6 +13,7 @@ private orders = "http://localhost:8000/api/orders"
 private url  = "http://localhost:8000/api/products"
 private signup  = "http://localhost:8000/api/signup"
 private login  = "http://localhost:8000/api/login"
+private profile  = "http://localhost:8000/api/profiles"
 
 getAllOrders(){
   return this.myClient.get(this.orders)
@@ -65,4 +66,24 @@ getAllUsers(){
 getUserById(Id :any){
   return this.myClient.get(`${this.signup}/${Id}`)
 }
+
+
+getProfile(){
+  return this.myClient.get(this.profile)
+}
+getByProfileId(id:any){
+  return this.myClient.get(`${this.profile}/${id}`)
+
+}
+getProfileEdit(id:any){
+  return this.myClient.get(`${this.profile}/${id}/edit`)
+
+}
+UpdateProfile(updatePro:any,id:any){
+  return this.myClient.post(`${this.profile}/${id}`,updatePro) // not put 
+}
+DeleteOrd(id:number){
+  return this.myClient.delete(`${this.profile}/${id}`)
+}
+
 }
