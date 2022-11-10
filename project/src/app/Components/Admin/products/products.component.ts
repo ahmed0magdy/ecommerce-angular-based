@@ -17,11 +17,12 @@ export class ProductsComponent implements OnInit {
   page:number = 1;
   total:number = 0;
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("UserId")
-    if(this.LoggedInAdmin != 5){
-        window.location.href = '/';
+    // this.LoggedInAdmin = localStorage.getItem("UserId")
+    // if(this.LoggedInAdmin != 5){
+    //     window.location.href = '/';
     
-    }
+    // }
+    
     // if(localStorage.getItem("user")){
     //   // alert("welcome "+sessionStorage.getItem("userEmail"));
     // }
