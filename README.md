@@ -1,6 +1,6 @@
 
 
-## Angular-Laravel Ecommerce Platform
+## Angular Laravel Ecommerce Platform
 
 This is a e-commerce platform made mostly using Laravel 9 and Angular 14
 
@@ -114,7 +114,6 @@ Team 5
 
 > Copyright (C) 2022 
 
-**[⬆ back to top](#Angular-Laravel Ecommerce Platform)**
 
 [Features]:#features
 [Requirements]:#requirements
