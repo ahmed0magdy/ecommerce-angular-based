@@ -12,29 +12,28 @@ export class NavComponent implements OnInit {
 isLoggedIn: any;
 LoggedInAdmin:any;
 flag = false;
-
+name:any;
   constructor(private _route:Router, public myService: ServicesService ) {   }
 
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("UserId")
+    this.LoggedInAdmin = localStorage.getItem("userType")
     this.isLoggedIn = localStorage.getItem("token");
-    if(this.LoggedInAdmin==5){
+    this.name = localStorage.getItem("name");
+    if(this.LoggedInAdmin == 'admin'){
       this.flag = true; //admin 
     }
-    // if(!this.LoggedInAdmin){
-    //     window.location.href = '/';
-    // }
+    if(!this.LoggedInAdmin){
+        window.location.href = '/';
+    }
   }
 
-  // logout(){
-
-  
-  //  }
   logout(){
   
     localStorage.removeItem("token");
     localStorage.removeItem("UserId");
-    // console.log("222200");
+    localStorage.removeItem("adminId");
+    localStorage.removeItem("userType");
+    localStorage.removeItem("name");
     window.location.href= "/login"
   } 
 
