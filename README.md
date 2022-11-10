@@ -114,7 +114,7 @@ Team 5
 
 > Copyright (C) 2022 
 
-**[⬆ back to top](#laravel-ecommerce-platform)**
+**[⬆ back to top](#Angular-Laravel Ecommerce Platform)**
 
 [Features]:#features
 [Requirements]:#requirements
