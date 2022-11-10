@@ -112,6 +112,7 @@ export class LoginComponent implements OnInit {
                   localStorage.setItem('token', data['token']);
                   localStorage.setItem('UserId', data['data']['id']);
                   localStorage.setItem('userType', data['userType']);
+                  localStorage.setItem('name', data['data']['name']);
                   alert('you are successfully login ' + data['data']['name']);
                   window.location.href = "/";
                   this.login.reset();
