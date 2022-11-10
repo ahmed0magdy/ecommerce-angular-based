@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.LoggedInAdmin = localStorage.getItem("UserId")
     if(this.LoggedInAdmin){
-        window.location.href = '/';
+        window.location.href = '/admin';
     
     }
    

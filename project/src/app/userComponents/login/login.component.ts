@@ -26,15 +26,15 @@ export class LoginComponent implements OnInit {
       "email": new FormControl( '',[Validators.required, Validators.email]),
       "password": new FormControl('', [Validators.required, Validators.minLength(7)])
     })
-    this.LoggedInAdmin = localStorage.getItem("UserId")
-    if(this.LoggedInAdmin){
-        window.location.href = '/';
+    this.LoggedInAdmin = localStorage.getItem("userType")
+    // if(this.LoggedInAdmin){
+    //     window.location.href = '/';
         
-      }
-      if(this.LoggedInAdmin == 5){
+    //   }
+      if(this.LoggedInAdmin == 'admin'){
         window.location.href ="/admin";
       }
-    console.log(this.LoggedInAdmin)
+   
   }
 
   // loginData(login:FormGroup){
@@ -82,32 +82,40 @@ export class LoginComponent implements OnInit {
   })
   
   loginData(){
-        console.log(this.UserForm);
+
+       
         if(this.UserForm.valid){
+
+        //   if( this.login.value.email == 'admin@gmail.com' && this.login.value.password=='123456789'){
+        //     localStorage.setItem('admin',this.login.value.email);
+        //     alert('you are successfully login as admin');
+        //     window.location.href = "/admin";
+        // }
+            
+
           this.myService.userLogin(this.login.value).subscribe(
             {
               next(data){
               console.log(data);
-              console.log(data['data']['id']); // fetch id of user  
+              console.log(data['userType']); // fetch id of user  
                 
                 if(data['userType']== "admin")
                 {
-                  localStorage.setItem("Admin", 'admin' );
+                  localStorage.setItem('token', data['token'] );
+                  localStorage.setItem('adminId', data['data']['id']);
+                  localStorage.setItem('userType', data['userType']);
                   alert('you are successfully login as Admin');
-                
-              
-                  window.location.href = "/AddProducts";
+                  window.location.href = "/admin";
                   this.login.reset();
                 } 
-                else
-                {
+                else{
                   localStorage.setItem('token', data['token']);
                   localStorage.setItem('UserId', data['data']['id']);
+                  localStorage.setItem('userType', data['userType']);
                   alert('you are successfully login ' + data['data']['name']);
                   window.location.href = "/";
                   this.login.reset();
                 }
-               
             },
             error(err)
             {
@@ -135,5 +143,6 @@ export class LoginComponent implements OnInit {
       get passValid(){
         return this.login.controls.password.valid;
       }
-  }
+    }
+
 

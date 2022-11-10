@@ -16,25 +16,22 @@ flag = false;
   constructor(private _route:Router, public myService: ServicesService ) {   }
 
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("UserId")
+    this.LoggedInAdmin = localStorage.getItem("userType")
     this.isLoggedIn = localStorage.getItem("token");
-    if(this.LoggedInAdmin==5){
+    if(this.LoggedInAdmin == 'admin'){
       this.flag = true; //admin 
     }
-    // if(!this.LoggedInAdmin){
-    //     window.location.href = '/';
-    // }
+    if(!this.LoggedInAdmin){
+        window.location.href = '/';
+    }
   }
 
-  // logout(){
-
-  
-  //  }
   logout(){
   
     localStorage.removeItem("token");
     localStorage.removeItem("UserId");
-    // console.log("222200");
+    localStorage.removeItem("adminId");
+    localStorage.removeItem("userType");
     window.location.href= "/login"
   } 
 
