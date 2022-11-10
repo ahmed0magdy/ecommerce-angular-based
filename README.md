@@ -26,13 +26,12 @@ User
 - about page some information about the store.
 - Can register with his (email. username, password, image, gender).
 - Can view [products page and profile] on login.
-- Products page
+- view Products page
 - Search by name.
 - View all products.
 - Add products to his cart.
 - View added products and checkout to make order.
-- Profile
-- View his own info.
+- View user own info.
 - Edit his own info.
 - View his orders (accepted, rejected, pending).
 - Cancel order if pending.
@@ -68,6 +67,12 @@ Install Nodejs
 [Download Node.js](https://nodejs.org/en/download/)
 
 
+Install Angulat CLI
+
+
+[Angular CLI](https://github.com/angular/angular-cli)
+
+
 NPM dependencies
 ```
 npm install
@@ -84,17 +89,22 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
-	
 Generating a New Application Key
 ```
 php artisan key:generate
 ```
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
+To create the symbolic link
+```
+php artisan storage:link
+```
 
 ## Development server
+```
+php artisan serve
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+```
 
 ## Contributors
 
