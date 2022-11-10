@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project';
+  LoggedInAdmin: any;
+  constructor(){
+    this.LoggedInAdmin = localStorage.getItem("UserId")
+    
+  }
+
 }
+

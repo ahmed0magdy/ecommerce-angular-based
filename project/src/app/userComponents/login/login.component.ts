@@ -13,6 +13,7 @@ import { NgIfContext } from '@angular/common';
 export class LoginComponent implements OnInit {
 
   UserId=0;
+  LoggedInAdmin: any;
  
   constructor(private _route:Router , public myService: ServicesService , public fb:FormBuilder, private _myActivate : ActivatedRoute  ) {
     this.UserId= _myActivate.snapshot.params["id"];
@@ -25,6 +26,15 @@ export class LoginComponent implements OnInit {
       "email": new FormControl( '',[Validators.required, Validators.email]),
       "password": new FormControl('', [Validators.required, Validators.minLength(7)])
     })
+    this.LoggedInAdmin = localStorage.getItem("userType")
+    // if(this.LoggedInAdmin){
+    //     window.location.href = '/';
+        
+    //   }
+      if(this.LoggedInAdmin == 'admin'){
+        window.location.href ="/admin";
+      }
+   
   }
 
   // loginData(login:FormGroup){
@@ -73,7 +83,7 @@ export class LoginComponent implements OnInit {
   
   loginData(){
 
-        console.log(this.UserForm);
+       
         if(this.UserForm.valid){
 
         //   if( this.login.value.email == 'admin@gmail.com' && this.login.value.password=='123456789'){
@@ -95,12 +105,13 @@ export class LoginComponent implements OnInit {
                   localStorage.setItem('adminId', data['data']['id']);
                   localStorage.setItem('userType', data['userType']);
                   alert('you are successfully login as Admin');
-                  window.location.href = "/AddProducts";
+                  window.location.href = "/admin";
                   this.login.reset();
                 } 
                 else{
                   localStorage.setItem('token', data['token']);
                   localStorage.setItem('UserId', data['data']['id']);
+                  localStorage.setItem('userType', data['userType']);
                   alert('you are successfully login ' + data['data']['name']);
                   window.location.href = "/";
                   this.login.reset();

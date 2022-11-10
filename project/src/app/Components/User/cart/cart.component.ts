@@ -107,7 +107,7 @@ export class CartComponent implements OnInit {
       let finalData=
       {
         // user_id:sessionStorage.getItem('user_id'),
-        user_id:1,
+        user_id:localStorage.getItem('UserId'),
         // date: new Date(),
          order:order,
         finaltotal:this.total

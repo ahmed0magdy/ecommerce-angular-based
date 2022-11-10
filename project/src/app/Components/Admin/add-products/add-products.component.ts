@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from '../Services/services.service';
 import { Router } from '@angular/router';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-add-products',
@@ -23,14 +24,17 @@ export class AddProductsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // if(localStorage.getItem("admin")){
-    //   // alert("welcome "+sessionStorage.getItem("Admin"));
-    // }
-    // else{
-    //   alert("you are not an Authorized");
-    //   window.location.href = "/";
+   let authAdmin :any;
+   authAdmin = localStorage.getItem(data['userType']);
+   console.log(authAdmin);
+    if(authAdmin == 'admin'){
+     alert("welcome admin");
+    }
+    else{
+      alert("you are not an Authorized");
+      window.location.href = "/";
 
-    // }
+    }
   }
  
 
