@@ -72,32 +72,39 @@ export class LoginComponent implements OnInit {
   })
   
   loginData(){
+
         console.log(this.UserForm);
         if(this.UserForm.valid){
+
+        //   if( this.login.value.email == 'admin@gmail.com' && this.login.value.password=='123456789'){
+        //     localStorage.setItem('admin',this.login.value.email);
+        //     alert('you are successfully login as admin');
+        //     window.location.href = "/admin";
+        // }
+            
+
           this.myService.userLogin(this.login.value).subscribe(
             {
               next(data){
               console.log(data);
-              console.log(data['data']['id']); // fetch id of user  
+              console.log(data['userType']); // fetch id of user  
                 
                 if(data['userType']== "admin")
                 {
-                  sessionStorage.setItem("Admin", 'admin' );
+                  localStorage.setItem('token', data['token'] );
+                  localStorage.setItem('adminId', data['data']['id']);
+                  localStorage.setItem('userType', data['userType']);
                   alert('you are successfully login as Admin');
-                
-              
                   window.location.href = "/AddProducts";
                   this.login.reset();
                 } 
-                else
-                {
+                else{
                   localStorage.setItem('token', data['token']);
                   localStorage.setItem('UserId', data['data']['id']);
                   alert('you are successfully login ' + data['data']['name']);
                   window.location.href = "/";
                   this.login.reset();
                 }
-               
             },
             error(err)
             {
@@ -125,5 +132,6 @@ export class LoginComponent implements OnInit {
       get passValid(){
         return this.login.controls.password.valid;
       }
-  }
+    }
+
 

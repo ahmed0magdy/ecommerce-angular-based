@@ -25,7 +25,7 @@ isLoggedIn: any;
   
     localStorage.removeItem("token");
     localStorage.removeItem("UserId");
-    console.log("222200");
+    localStorage.removeItem("adminId");
   } 
 
     //     // window.location.href = "/"; 
