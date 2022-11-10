@@ -5,16 +5,15 @@
       <li><a style="text-decoration:none;"  routerLinkActive="active" routerLink="/AddProducts">AddProducts</a></li>
       <li><a style="text-decoration:none;"  routerLinkActive="active" routerLink="/orders">Orders</a></li>
       
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          profile
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink="login">login</a>
-          <a class="dropdown-item" routerLink="profile">profile</a>
-          <a class="dropdown-item" routerLink="signup"> register </a>
-        </div>
-      </div>
+      <li class="dropdown">
+        <a class=" dropdown-toggle text-primary" style="text-decoration: none;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          ِAccount 
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a href=""  class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> logout</a></li>
+        </ul>
+      </li>
+
 
 
   </nav>

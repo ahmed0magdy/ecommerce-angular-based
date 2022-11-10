@@ -12,12 +12,13 @@ export class NavComponent implements OnInit {
 isLoggedIn: any;
 LoggedInAdmin:any;
 flag = false;
-
+name:any;
   constructor(private _route:Router, public myService: ServicesService ) {   }
 
   ngOnInit(): void {
     this.LoggedInAdmin = localStorage.getItem("userType")
     this.isLoggedIn = localStorage.getItem("token");
+    this.name = localStorage.getItem("name");
     if(this.LoggedInAdmin == 'admin'){
       this.flag = true; //admin 
     }
@@ -32,6 +33,7 @@ flag = false;
     localStorage.removeItem("UserId");
     localStorage.removeItem("adminId");
     localStorage.removeItem("userType");
+    localStorage.removeItem("name");
     window.location.href= "/login"
   } 
 
