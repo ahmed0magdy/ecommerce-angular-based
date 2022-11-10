@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
  products:any[]=[];
  productsInCart:any[]=[]
  page:number = 1;
- total:number = 0;
+  total:number = 0;
  title:any;
 
  users:any[]=[];
@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
      this.LoggedInAdmin = localStorage.getItem("UserId")
      if(!this.LoggedInAdmin){
          window.location.href = '/login';
+     
+     }
+     this.LoggedInAdmin = localStorage.getItem("userType")
+     if(this.LoggedInAdmin == 'admin'){
+         window.location.href = '/admin';
      
      }
  
