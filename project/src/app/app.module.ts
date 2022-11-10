@@ -24,6 +24,7 @@ import { OrdersComponent } from './Components/Admin/orders/orders.component';
 import { OrderProductComponent } from './Components/Admin/order-product/order-product.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
 import { EditProfileComponent } from './Components/User/edit-profile/edit-profile.component';
+import { CheckoutComponent } from './Components/User/checkout/checkout.component';
 
 
 
@@ -46,6 +47,9 @@ import { EditProfileComponent } from './Components/User/edit-profile/edit-profil
     OrderProductComponent,
     ProfileComponent,
     EditProfileComponent,
+    CheckoutComponent,
+    
+    
     
   ],
   imports: [
@@ -55,6 +59,7 @@ import { EditProfileComponent } from './Components/User/edit-profile/edit-profil
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    
   
   ],
   providers: [

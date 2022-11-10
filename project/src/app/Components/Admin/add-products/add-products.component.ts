@@ -28,7 +28,7 @@ export class AddProductsComponent implements OnInit {
    authAdmin = localStorage.getItem('userType');
    console.log(authAdmin);
     if(authAdmin == 'admin'){
-     alert("welcome admin");
+    // alert("welcome admin");
     }
     else{
       alert("you are not an Authorized");
