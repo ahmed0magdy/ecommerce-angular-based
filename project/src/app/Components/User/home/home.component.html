@@ -1,0 +1,29 @@
+
+<div class="p-3 search container">
+  <input type="search" name="search" (input)="search()" [(ngModel)]="title" id="" class="form-control">
+</div>
+
+<div *ngFor="let user of users">
+        <h1>Hello {{user.username}}</h1>
+</div>
+
+ <section id="products">
+    <div class="container " *ngFor="let product of products">
+            <div class="row col-4 " >
+            <app-product-item [product]="product" (item)="addtocart($event)"></app-product-item>
+    </div>
+
+</div>
+</section>
+<pagination-controls class="text-center" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
+
+
+
+
+
+
+
+
+
+

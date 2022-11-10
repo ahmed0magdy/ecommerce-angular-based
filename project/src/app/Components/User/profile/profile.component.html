@@ -1,0 +1,72 @@
+<table class="mb-5 w-100 mt-5 table table-bordered table-hover table-striped text-center">
+   <thead>
+         <tr class="bg-dark text-primary">
+            <td>name</td>
+            <td>email</td>
+            <td>address</td>
+            <td>phone</td>
+            <td>action</td>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+   <td>{{profile.users.name}}</td> 
+   <td>{{profile.users.email}}</td> 
+   <td>{{profile.users.address}}</td> 
+   <td>{{profile.users.phone}}</td>
+   <td><a class="btn btn-success" href="/profiles/edit/{{profile.users.id}}">Edit</a></td> 
+   </tr>
+</tbody>
+</table>
+
+<table class="w-100 mt-5 table table-bordered table-hover table-striped text-center">
+   <thead>
+      <tr class="bg-dark text-primary">
+      <td>order_id</td>
+      <td>total</td>
+      <td>status</td>
+      <td>Order Date</td>
+      <td>Action</td>
+      
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let o of profile.orders">
+   <td>{{o.id}} </td> 
+   <td>{{o.total}}</td> 
+   <td>{{o.status}} </td>
+   <td>{{o.created_at}} </td>
+   <td><a *ngIf="o.id && o.status =='pending'" (click)="DeleteOrder(o.id)" class="me-3 btn btn-danger">Cancel</a> <a (click)="Orderchange(o.id)"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a></td>
+   
+   </tr>
+   </tbody>
+</table>
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h1 class="modal-title fs-5" id="exampleModalLabel">Order products</h1>
+         <button (click)="orderdelete()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <table class="p-5 w-100 mt-5 table table-bordered table-hover table-striped text-center">
+         <thead>
+            <tr class="bg-dark text-primary">
+               <td>title</td>
+               <td>price</td>
+               <td>qty</td>
+         </tr>
+         </thead>
+         <tbody>
+         <tr *ngFor="let p of orders">
+         <td>{{p.title}}</td> 
+         <td>{{p.price}}</td> 
+         <td>{{p.qty}} </td>
+         </tr>
+         
+         </tbody>
+      </table>
+     </div>
+   </div>
+ </div>
+
