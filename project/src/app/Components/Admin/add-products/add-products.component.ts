@@ -25,7 +25,7 @@ export class AddProductsComponent implements OnInit {
 
   ngOnInit(): void {
    let authAdmin :any;
-   authAdmin = localStorage.getItem(data['userType']);
+   authAdmin = localStorage.getItem('userType');
    console.log(authAdmin);
     if(authAdmin == 'admin'){
      alert("welcome admin");
