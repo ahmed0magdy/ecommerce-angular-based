@@ -11,16 +11,15 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   isLoggedIn: any;
   constructor( private _route:Router ) { }
-
+  name:any;
   ngOnInit(): void {
     this.isLoggedIn = localStorage.getItem("token");
+    this.name = localStorage.getItem('userType');
   }
+
   logout(){
   
-    localStorage.removeItem("token");
-    localStorage.removeItem("UserId");
-    localStorage.removeItem("adminId");
-    localStorage.removeItem("userType");
+    localStorage.clear();
     window.location.href= "/login"
   } 
  

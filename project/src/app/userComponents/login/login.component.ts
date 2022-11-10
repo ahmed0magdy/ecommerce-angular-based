@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
       "password": new FormControl('', [Validators.required, Validators.minLength(7)])
     })
     this.LoggedInAdmin = localStorage.getItem("userType")
-    // if(this.LoggedInAdmin){
-    //     window.location.href = '/';
+    if(this.LoggedInAdmin){
+        window.location.href = '/';
         
-    //   }
+      }
       if(this.LoggedInAdmin == 'admin'){
         window.location.href ="/admin";
       }

@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
   LoggedInAdmin: any;
   
   constructor(private myservice:ServicesService,activatedroute:ActivatedRoute) { }
@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
     //console.log(order_id);
     this.myservice.DeleteOrd(order_id).subscribe((data)=>{
      // console.log(data);
-      window.location.href = "/profiles";
+      window.location.href = "/checkout";
     })
   }
   Orderchange(o_id:any){
@@ -44,6 +44,8 @@ export class ProfileComponent implements OnInit {
   }
   orderdelete(){
     this.orders = [];
+    
   }
+
 
 }

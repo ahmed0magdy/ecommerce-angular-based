@@ -12,17 +12,23 @@ export class CartComponent implements OnInit {
   productsInCart:any[]=[]
   total:any=0;
   imgsrc= 'http://localhost:8000/storage/images';
+  LoggedInAdmin: any;
 
   constructor(private myserv:ServicesService,private _route:Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("token")){
-      // alert("welcome "+sessionStorage.getItem("userEmail"));
-    }
-    else{
-      alert("please logged in ....");
-      window.location.href = "/login";
-    }
+    // if(localStorage.getItem("token")){
+    //   // alert("welcome "+sessionStorage.getItem("userEmail"));
+    // }
+    // else{
+    //   alert("please logged in ....");
+    //   window.location.href = "/login";
+    // }
+    this.LoggedInAdmin = localStorage.getItem("userType")
+     if(this.LoggedInAdmin != 'user'){
+         window.location.href = '/admin';
+     
+     }
 
 
     this.listItemstocart()
@@ -112,14 +118,14 @@ export class CartComponent implements OnInit {
          order:order,
         finaltotal:this.total
       }
-      localStorage.setItem("checkout",JSON.stringify(finalData));
+      // localStorage.setItem("checkout",JSON.stringify(finalData));
         // insert into tables
         this.myserv.insertOrder(finalData).subscribe(
           (data:any)=>{
             
             //  console.log('hello data  '+data)
-             localStorage.clear();
-              window.location.href="/profiles";
+              localStorage.removeItem('cart');
+              window.location.href="/checkout";
               
           }
          );

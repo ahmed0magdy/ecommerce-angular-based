@@ -20,6 +20,8 @@ class UserController extends Controller
             'name' => request()->name,
             'email' => request()->email,
             'password' => /*Hash::make(*/ request()->password,
+            'phone' => /*Hash::make(*/ request()->phone,
+            'address' => /*Hash::make(*/ request()->address,
         ]);
         return $newUser;
 

@@ -32,11 +32,11 @@ export class OrderProductComponent implements OnInit {
       
     }
     findsum(data){    
-       this.value=data    
-       console.log(this.value);  
+      //  this.value=data    
+      //  console.log(this.value);  
        for(let j=0;j<data.length;j++){   
-            this.totalty+= this.value[j].totaled  
-            console.log(this.totalty)  
+            this.totalty+= data[j].totaled  
+            // console.log(this.totalty)  
        }  
        
     }  

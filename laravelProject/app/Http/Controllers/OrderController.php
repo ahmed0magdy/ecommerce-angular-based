@@ -17,10 +17,11 @@ class OrderController extends Controller
 
         return $order;
     }
-    //SELECT p.id,title,qty,price from products p ,order_product where order_product.order_id = p.id
+    //SELECT order_id,p.id,title,qty,price from products p ,order_product where order_product.product_id = p.id and order_id =$orderId;
+
     public function orderview($orderId){
-        $ordered =DB::table('products')->join('order_product','order_product.product_id', '=' , 'products.id')
-        ->select('order_id','title',DB::raw('SUM(qty) as quant'),'price',DB::raw('SUM(qty * price) as totaled'))->groupBy('qty')->where('order_id',$orderId)->get();
+        $ordered =DB::table('products as p')->join('order_product','order_product.product_id', '=' , 'p.id')
+        ->select(DB::raw('SUM(qty * price) as totaled'),'order_id','title','qty','p.id','price')->groupBy('p.id')->where('order_id',$orderId)->get();
 //->select(DB::raw("SUM(student_marks) as count"))
         return $ordered;
 
