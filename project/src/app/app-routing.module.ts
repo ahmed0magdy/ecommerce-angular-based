@@ -14,6 +14,8 @@ import { OrderProductComponent } from './Components/Admin/order-product/order-pr
 import { ProfileComponent } from './Components/User/profile/profile.component';
 import { EditProfileComponent } from './Components/User/edit-profile/edit-profile.component';
 import { CheckoutComponent } from './Components/User/checkout/checkout.component';
+import { AboutComponent } from './Components/User/about/about.component';
+import { ContactComponent } from './Components/User/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -67,6 +69,14 @@ const routes: Routes = [
     {
       path:"checkout",
       component:CheckoutComponent
+    },
+    {
+      path:"about",
+      component:AboutComponent
+    },
+    {
+      path:"contact",
+      component:ContactComponent
     },
     {
       path:"profiles/edit/:id",
