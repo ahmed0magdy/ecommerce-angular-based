@@ -10,8 +10,8 @@ export class HomeComponent implements OnInit {
   LoggedInAdmin: any;
 
   constructor(private myserv:ServicesService) { }
-
- products:any[]=[];
+  SortbyParam = '';
+  SortDirection = 'asc'; products:any[]=[];
  productsInCart:any[]=[]
  page:number = 1;
   total:number = 0;
@@ -90,6 +90,13 @@ export class HomeComponent implements OnInit {
 
 
 
+  }
+  onSortDirection() {
+    if (this.SortDirection === 'desc') {
+      this.SortDirection = 'asc';
+    } else {
+      this.SortDirection = 'desc';
+    }
   }
 
 
