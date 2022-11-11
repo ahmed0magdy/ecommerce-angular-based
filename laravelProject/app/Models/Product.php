@@ -15,6 +15,7 @@ class Product extends Model
         'title',
         'SKU',
         'details',
+        'quantity',
         'image',
         'price',
     ];
@@ -25,5 +26,8 @@ class Product extends Model
                 'source' => 'SKU'
             ]
         ];
+    }
+    public function productorder(){
+        return $this->hasMany(Product_Order::class);
     }
 }

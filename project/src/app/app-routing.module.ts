@@ -9,6 +9,13 @@ import { SignupComponent } from './userComponents/signup/signup.component';
 import { CartComponent } from './Components/User/cart/cart.component';
 import { HomeComponent } from './Components/User/home/home.component';
 import { ProductDetailsComponent } from './Components/User/product-details/product-details.component';
+import { OrdersComponent } from './Components/Admin/orders/orders.component';
+import { OrderProductComponent } from './Components/Admin/order-product/order-product.component';
+import { ProfileComponent } from './Components/User/profile/profile.component';
+import { EditProfileComponent } from './Components/User/edit-profile/edit-profile.component';
+import { CheckoutComponent } from './Components/User/checkout/checkout.component';
+import { AboutComponent } from './Components/User/about/about.component';
+import { ContactComponent } from './Components/User/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -46,6 +53,34 @@ const routes: Routes = [
   {
     path: "signup",
      component:SignupComponent
+    },
+  {
+    path: "orders",
+     component:OrdersComponent
+    },
+  {
+    path: "orders/:id",
+     component:OrderProductComponent
+    },
+    {
+      path:"profiles",
+      component:ProfileComponent
+    },
+    {
+      path:"checkout",
+      component:CheckoutComponent
+    },
+    {
+      path:"about",
+      component:AboutComponent
+    },
+    {
+      path:"contact",
+      component:ContactComponent
+    },
+    {
+      path:"profiles/edit/:id",
+      component:EditProfileComponent
     },
   {
     path:"**",

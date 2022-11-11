@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from '../Services/services.service';
 import { Router } from '@angular/router';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-add-products',
@@ -23,14 +24,17 @@ export class AddProductsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // if(sessionStorage.getItem("Admin")){
-    //   // alert("welcome "+sessionStorage.getItem("Admin"));
-    // }
-    // else{
-    //   alert("you are not an Authorized");
-    //   this._route.navigate(['']);
+   let authAdmin :any;
+   authAdmin = localStorage.getItem('userType');
+   console.log(authAdmin);
+    if(authAdmin == 'admin'){
+    // alert("welcome admin");
+    }
+    else{
+      alert("you are not an Authorized");
+      window.location.href = "/";
 
-    // }
+    }
   }
  
 
@@ -44,42 +48,27 @@ uploadFile(event:Event){
 
 submitForm()
 {
-  
   const formData :any= new FormData();
      formData.append('image', this.form.controls['image'].value);
      formData.append('title', this.form.controls['title'].value);
      formData.append('SKU', this.form.controls['SKU'].value);
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
+    //  formData.append('_METHOD', 'POST');
      console.log(formData);
-     this.myService.AddProd(formData).subscribe();
-     alert("product is added")
-      window.location.href = "/admin"    
+
+     this.myService.AddProd(formData).subscribe(
+      (data:any)=>{
+        window.location.href="/admin";
+      }
+     );
+
+      // window.location.href="/admin";
 
 }
 
 
 
 
-//   AddProductForm = new FormGroup({
-//     title: new FormControl(""),
-//     SKU: new FormControl("",[Validators.required,Validators.maxLength(8),Validators.minLength(0)]),
-//     image:new FormControl(""),
-//     price: new FormControl(0),
-//     details: new FormControl("")
-//   })
-//   get SKUvalid(){
-//     return this.AddProductForm.controls.SKU.valid
-//   }
-//   AddProd(){
-//     if(this.AddProductForm.valid){
-//       this.myService.AddProd(this.AddProductForm.value).subscribe();
-//       alert("product is added")
-//       window.location.href = "/admin"    
-//     }else{
-//     // alert("error");
-//     }
 
-
-// }
 }

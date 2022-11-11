@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import{FormGroup, FormControl,Validators} from "@angular/forms";
+import{FormGroup, FormControl,Validators, FormBuilder} from "@angular/forms";
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
+import { data } from 'jquery';
 
 
 @Component({
@@ -11,51 +12,101 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _route:Router , private _http:HttpClient) { }
-
   signup:FormGroup|any;
-  signupUser:any;
-  ngOnInit(): void {
-    this.signup = new FormGroup ({
-      "name": new FormControl('', [Validators.required, Validators.minLength(3)]),
-      "email": new FormControl('',[Validators.email, Validators.required]),
-      "password": new FormControl('', [Validators.minLength(7),Validators.maxLength(20),Validators.required]),
-      "gender": new FormControl()
-    })
-  }
-  signupData(signup:FormGroup){
-    console.log(this.signup.value);
-    this.signupUser= this.signup.value.name
-    let that= this;
-    this._http.post<any>("http://localhost:3000/users", this.signup.value).subscribe(
+  LoggedInAdmin: any;
+
+  constructor(
+              public fb:FormBuilder , private _route:Router ,
+              public myService: ServicesService 
+            )
       {
+          this.signup = this.fb.group({
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            phone: '',
+            address: '',
+            gender: ''
+          })
+      }
+
+  // signupUser:any;
+
+  ngOnInit(): void {
+    this.LoggedInAdmin = localStorage.getItem("UserId")
+    if(this.LoggedInAdmin){
+        window.location.href = '/admin';
+    
+    }
+   
+  }
+ 
+  AddUserForm = new FormGroup ({
+    "name": new FormControl('',/* [Validators.required, Validators.minLength(3)]*/), 
+    "email": new FormControl('',/*[Validators.email, Validators.required]*/),
+    "password": new FormControl('',/* [Validators.min(7),Validators.max(20),Validators.required]*/),
+    "password_confirmation": new FormControl('',/*Validators.required*/),
+    "phone": new FormControl('',/*Validators.required*/),
+    "address": new FormControl('',/*Validators.required*/),
+    "gender": new FormControl()
+  });
+
+  // addUser(){
+  //   console.log(this.AddUserForm);
+  //   if(this.AddUserForm.valid){
+  //     this.myService.addUser(this.signup.value).subscribe(
+  //       res=>{
+  //         console.log(res);
+  //        alert("you are successfully register ... ");
+  //        window.location.href = "/login"  ;
+         
+  //       },
+  //       err=>{
+  //         alert("something went wrong .!!");
+  //         console.log(err);
+  //       }
+
+  //     );
+        
+  //   }
+  //   else{
+  //       alert('something went wrong');
+  //   }
+
+  // }
+
+  addUser(){
+    console.log(this.signup);
+    // if(this.AddUserForm.valid){
+      this.myService.addUser(this.signup.value).subscribe(
+       {
         next(data){
-          that.signup.reset();
-          that._route.navigate(['login']);
-          alert("you are successfully register... ");
+          console.log(data);
+           alert("you are successfully register ... ");
+           window.location.href = "/login"  ; 
         },
         error(err){
           console.log(err);
-          alert('something went wrong');
+          alert('something went wrong !!!');
         }
-      }
-    )
-    // .subscribe(res=>{
-    //   this._toast.success(this.signupUser, );
-    //   this.signup.reset();
-    //   this._route.navigate(['login']);
-    // },err=>{
-    //   alert('something went wrong');
-    // })
+       }
+
+      )
   }
-  get NameValid(){
-    return this.signup.controls.name.valid;
+  get ValidName(){
+    // return this.signup.value.name.validdata['image']
+    return this.AddUserForm.controls.name.valid
   }
-  get EmailValid(){
-    return this.signup.controls.email.valid;
+  get ValidEmail(){
+    return this.AddUserForm.controls.email.valid
   }
-  get passwordValid(){
-    return this.signup.controls.password.valid;
+  get ValidPassword(){
+    return this.AddUserForm.controls.password.valid
   }
+  get ValidConfirmPass(){
+    return this.AddUserForm.controls.password_confirmation.valid
+  }
+
 
 }

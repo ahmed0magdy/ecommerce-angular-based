@@ -20,6 +20,15 @@ import { LoginComponent } from './userComponents/login/login.component';
 import { SignupComponent } from './userComponents/signup/signup.component';
 import { UsersService } from './services/users.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { OrdersComponent } from './Components/Admin/orders/orders.component';
+import { OrderProductComponent } from './Components/Admin/order-product/order-product.component';
+import { ProfileComponent } from './Components/User/profile/profile.component';
+import { EditProfileComponent } from './Components/User/edit-profile/edit-profile.component';
+import { CheckoutComponent } from './Components/User/checkout/checkout.component';
+import { AboutComponent } from './Components/User/about/about.component';
+import { ContactComponent } from './Components/User/contact/contact.component';
+import { FooterComponent } from './Components/User/footer/footer.component';
+import { SortPipe } from './Components/User/pipes/sort.pipe';
 
 
 
@@ -38,6 +47,18 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductItemComponent,
     LoginComponent,
     SignupComponent,
+    OrdersComponent,
+    OrderProductComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    CheckoutComponent,
+    AboutComponent,
+    ContactComponent,
+    FooterComponent,
+    SortPipe,
+    
+    
+    
     
   ],
   imports: [
@@ -47,6 +68,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    
   
   ],
   providers: [
