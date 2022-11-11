@@ -14,7 +14,7 @@ class UserController extends Controller
     public function registerNewUser(StoreUserRequest  $request)
     {
 
-        echo "hello";
+        // echo "hello";
         $newUser = User::create([
             'name' => request()->name,
             'email' => request()->email,
@@ -49,6 +49,14 @@ class UserController extends Controller
            return  [$user->createToken($request->email)->plainTextToken,$user];
         }
 
+    }
+
+    public function getDataUser(){
+        $user = User::all();
+    }
+
+    public function getDataUserId($Id){
+        $user = User::find($Id);
     }
 
 }
