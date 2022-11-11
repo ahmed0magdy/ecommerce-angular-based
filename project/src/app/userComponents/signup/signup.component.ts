@@ -13,6 +13,7 @@ import { data } from 'jquery';
 export class SignupComponent implements OnInit {
 
   signup:FormGroup|any;
+  LoggedInAdmin: any;
 
   constructor(
               public fb:FormBuilder , private _route:Router ,
@@ -24,21 +25,30 @@ export class SignupComponent implements OnInit {
             email: '',
             password: '',
             password_confirmation: '',
+            phone: '',
+            address: '',
             gender: ''
           })
       }
 
-  signupUser:any;
+  // signupUser:any;
 
   ngOnInit(): void {
+    this.LoggedInAdmin = localStorage.getItem("UserId")
+    if(this.LoggedInAdmin){
+        window.location.href = '/admin';
+    
+    }
    
   }
  
   AddUserForm = new FormGroup ({
-    "name": new FormControl('', /*[Validators.required, Validators.minLength(3)]*/),
+    "name": new FormControl('',/* [Validators.required, Validators.minLength(3)]*/), 
     "email": new FormControl('',/*[Validators.email, Validators.required]*/),
-    "password": new FormControl('', /*[Validators.minLength(7),Validators.maxLength(20),Validators.required]*/),
-    "password_confirmation": new FormControl('',/*[Validators.required]*/),
+    "password": new FormControl('',/* [Validators.min(7),Validators.max(20),Validators.required]*/),
+    "password_confirmation": new FormControl('',/*Validators.required*/),
+    "phone": new FormControl('',/*Validators.required*/),
+    "address": new FormControl('',/*Validators.required*/),
     "gender": new FormControl()
   });
 
@@ -68,7 +78,7 @@ export class SignupComponent implements OnInit {
 
   addUser(){
     console.log(this.signup);
-    if(this.AddUserForm.valid){
+    // if(this.AddUserForm.valid){
       this.myService.addUser(this.signup.value).subscribe(
        {
         next(data){
@@ -83,11 +93,9 @@ export class SignupComponent implements OnInit {
        }
 
       )
-    }
-
-
   }
   get ValidName(){
+    // return this.signup.value.name.validdata['image']
     return this.AddUserForm.controls.name.valid
   }
   get ValidEmail(){

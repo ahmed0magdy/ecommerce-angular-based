@@ -1,13 +1,12 @@
 <app-header></app-header>
-
-<table class="w-100 mt-5 table table-bordered table-hover text-center">
+<section class="container-fluid">
+<table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
     <thead>
-    <tr class="table-dark text-primary">
+    <tr style="text-transform:capitalize" class="bg-white text-primary">
         <th>order_id</th>
         <th>username</th>
         <th>email</th>
         <th>status</th>
-        <th>total price</th>
         <th>Action</th>
     </tr>
 </thead>
@@ -17,15 +16,22 @@
         <td>{{o.name}}</td>
         <td>{{o.email}}</td>
         <td>
-            <form [formGroup]="form" (ngSubmit)="UpdateOrder()">
-             <select formControlName="status" id="">
-                <option value="pending">pending</option>
-                <option value="Approved">Approved</option>
-                <option value="Rejected">Rejected</option>
-             </select>
-            </form>
+            <!---->
+            <form  [formGroup]="form"> 
+            <select (change)="UpdateOrder(o.id)" formControlName="status" class="form-control" id="">
+                <option [selected]="o.status=='pending'" value="pending">
+                    pending
+                </option>
+                <option [selected]="o.status=='approved'" value="approved">
+                    approved
+                </option>
+                <option [selected]="o.status=='rejected'" value="rejected">
+                   Rejected
+                </option>
+            </select>
+            <!-- <button type="submit" class="btn btn-secondary">Click</button> -->
+        </form>
         </td>
-        <td>{{o.total}}</td>
         <td><a class="btn btn-outline-primary" 
             routerLink="{{o.id}}">
             Order Details
@@ -33,3 +39,4 @@
     </tr>
 </tbody>
 </table>
+</section>

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  LoggedInAdmin: any;
 
   constructor(private myService: ServicesService, private _route:Router ) { }
   products:any
@@ -16,11 +17,17 @@ export class ProductsComponent implements OnInit {
   page:number = 1;
   total:number = 0;
   ngOnInit(): void {
-    // if(sessionStorage.getItem("userEmail")){
+    this.LoggedInAdmin = localStorage.getItem("userType")
+    if(this.LoggedInAdmin != 'admin'){
+        window.location.href = '/';
+    
+    }
+    
+    // if(localStorage.getItem("user")){
     //   // alert("welcome "+sessionStorage.getItem("userEmail"));
     // }
     // else{
-    //   this._route.navigate(['']);
+    //   window.location.href = "/";
     // }
     this.getProducts();
     // if(sessionStorage.getItem("Admin")){

@@ -9,14 +9,12 @@ export class ServicesService {
 
 
 
-
-private url  = "http://localhost:8000/api/products";
-// public httpOption ={
-//   Headers: new HttpHeaders({
-//     'Accept':'application/json'
-//   })
-// };
 private orders = "http://localhost:8000/api/orders"
+private url  = "http://localhost:8000/api/products"
+private signup  = "http://localhost:8000/api/signup"
+private login  = "http://localhost:8000/api/login"
+private logout  = "http://localhost:8000/api/logout"
+private profile  = "http://localhost:8000/api/profiles"
 
 getAllOrders(){
   return this.myClient.get(this.orders)
@@ -33,9 +31,6 @@ insertOrder(order:any){
   return this.myClient.post(this.orders,order) 
 }
 
-private url  = "http://localhost:8000/api/products"
-private signup  = "http://localhost:8000/api/signup"
-private login  = "http://localhost:8000/api/login"
 
 
 getAllProducts(page:number){
@@ -66,10 +61,33 @@ addUser(newUser:any){
 userLogin(newUser:any){
   return this.myClient.post(this.login,newUser)
 }
+// userLogout( httpOptions:any ){
+//   return this.myClient.delete(this.logout, httpOptions)  //-------------->>>>>>> >> a3mel eh 
+// }
 getAllUsers(){
   return this.myClient.get(this.signup)
 }
 getUserById(Id :any){
   return this.myClient.get(`${this.signup}/${Id}`)
 }
+
+
+getProfile(){
+  return this.myClient.get(this.profile)
+}
+getByProfileId(id:any){
+  return this.myClient.get(`${this.profile}/${id}`)
+
+}
+getProfileEdit(id:any){
+  return this.myClient.get(`${this.profile}/${id}/edit`)
+
+}
+UpdateProfile(updatePro:any,id:any){
+  return this.myClient.post(`${this.profile}/${id}`,updatePro) // not put 
+}
+DeleteOrd(id:number){
+  return this.myClient.delete(`${this.profile}/${id}`)
+}
+
 }

@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-   
+
     public function index(){
-        return Product::orderBy('id', 'desc')->paginate(10);
+        return Product::orderBy('id', 'desc')->paginate(12);
     }
 
     public function show($productId){

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import{FormGroup, FormControl,Validators,FormBuilder} from "@angular/forms";
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
+import { NgIfContext } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,8 @@ import { data } from 'jquery';
 export class LoginComponent implements OnInit {
 
   UserId=0;
+  LoggedInAdmin: any;
+ 
   constructor(private _route:Router , public myService: ServicesService , public fb:FormBuilder, private _myActivate : ActivatedRoute  ) {
     this.UserId= _myActivate.snapshot.params["id"];
   }
@@ -23,6 +26,15 @@ export class LoginComponent implements OnInit {
       "email": new FormControl( '',[Validators.required, Validators.email]),
       "password": new FormControl('', [Validators.required, Validators.minLength(7)])
     })
+    this.LoggedInAdmin = localStorage.getItem("userType")
+    if(this.LoggedInAdmin){
+        window.location.href = '/';
+        
+      }
+      if(this.LoggedInAdmin == 'admin'){
+        window.location.href ="/admin";
+      }
+   
   }
 
   // loginData(login:FormGroup){
@@ -63,23 +75,54 @@ export class LoginComponent implements OnInit {
 
 
   //     }
+
   UserForm = new FormGroup ({
     "email": new FormControl('',/*[Validators.email, Validators.required]*/),
     "password": new FormControl('', /*[Validators.minLength(7),Validators.maxLength(20),Validators.required]*/),
   })
+  
   loginData(){
-        console.log(this.UserForm);
+
+       
         if(this.UserForm.valid){
+
+        //   if( this.login.value.email == 'admin@gmail.com' && this.login.value.password=='123456789'){
+        //     localStorage.setItem('admin',this.login.value.email);
+        //     alert('you are successfully login as admin');
+        //     window.location.href = "/admin";
+        // }
+            
+
           this.myService.userLogin(this.login.value).subscribe(
             {
               next(data){
               console.log(data);
-              console.log(data.valueOf['name']); //error       
+              console.log(data['userType']); // fetch id of user  
+                
+                if(data['userType']== "admin")
+                {
+                  localStorage.setItem('token', data['token'] );
+                  localStorage.setItem('adminId', data['data']['id']);
+                  localStorage.setItem('userType', data['userType']);
+                  alert('you are successfully login as Admin');
+                  window.location.href = "/admin";
+                  this.login.reset();
+                } 
+                else{
+                  localStorage.setItem('token', data['token']);
+                  localStorage.setItem('UserId', data['data']['id']);
+                  localStorage.setItem('userType', data['userType']);
+                  localStorage.setItem('name', data['data']['name']);
+                  alert('you are successfully login ' + data['data']['name']);
+                  window.location.href = "/";
+                  this.login.reset();
+                }
             },
             error(err)
             {
-              alert("something is wrong .!!");
+              alert("user not found !! ");
               console.log(err);
+              window.location.href = "/signup "  ; 
             }
           }
     
@@ -101,5 +144,6 @@ export class LoginComponent implements OnInit {
       get passValid(){
         return this.login.controls.password.valid;
       }
-  }
+    }
+
 
