@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Order_Product;
 use App\Models\Product_Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -100,4 +101,6 @@ class ProductController extends Controller
 
     return $product->delete();
 }
+
+
 }
