@@ -87,7 +87,7 @@ php artisan migrate
 ```
 
 ```
-php artisan db:seed
+php artisan db:seed --class=ProductSeeder
 ```
 Generating a New Application Key
 ```
