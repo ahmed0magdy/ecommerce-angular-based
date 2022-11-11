@@ -25,6 +25,10 @@ import { OrderProductComponent } from './Components/Admin/order-product/order-pr
 import { ProfileComponent } from './Components/User/profile/profile.component';
 import { EditProfileComponent } from './Components/User/edit-profile/edit-profile.component';
 import { CheckoutComponent } from './Components/User/checkout/checkout.component';
+import { AboutComponent } from './Components/User/about/about.component';
+import { ContactComponent } from './Components/User/contact/contact.component';
+import { FooterComponent } from './Components/User/footer/footer.component';
+import { SortPipe } from './Components/User/pipes/sort.pipe';
 
 
 
@@ -48,6 +52,11 @@ import { CheckoutComponent } from './Components/User/checkout/checkout.component
     ProfileComponent,
     EditProfileComponent,
     CheckoutComponent,
+    AboutComponent,
+    ContactComponent,
+    FooterComponent,
+    SortPipe,
+    
     
     
     
