@@ -4,6 +4,8 @@
 
 This is a e-commerce platform made mostly using Laravel 9 and Angular 14
 
+Live Video : https://drive.google.com/drive/folders/1mDSvVmzYDoL8OaiNE-Z4VIG1ezNzy6A2?usp=sharing
+
 | [Features][] | [Requirements][] | [Install][] | [How to setting][] | [Contributors][] | [License][] |
 |---|---|---|---|---|---|
 
@@ -13,6 +15,7 @@ Admin
 - Can login with his pre-registered email and password.
 - Can view products page.
 - Search by name.
+- filter by price.
 - View all products.
 - Create, update, edit and delete any product.
 - Create product with title, image, price, details.
