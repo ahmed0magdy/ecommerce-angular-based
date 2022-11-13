@@ -9,22 +9,27 @@ import { ServicesService } from '../../Admin/Services/services.service';
 export class HomeComponent implements OnInit {
   LoggedInAdmin: any;
 
-  constructor(private myserv:ServicesService) { }
-
- products:any[]=[];
+  constructor(private myservice:ServicesService) { }
+  SortbyParam = '';
+  SortDirection = 'asc'; products:any[]=[];
  productsInCart:any[]=[]
  page:number = 1;
- total:number = 0;
+  total:number = 0;
  title:any;
 
  users:any[]=[];
 
-
+ 
   ngOnInit(): void {
      this.getdata();
      this.LoggedInAdmin = localStorage.getItem("UserId")
      if(!this.LoggedInAdmin){
          window.location.href = '/login';
+     
+     }
+     this.LoggedInAdmin = localStorage.getItem("userType")
+     if(this.LoggedInAdmin == 'admin'){
+         window.location.href = '/admin';
      
      }
  
@@ -41,7 +46,7 @@ export class HomeComponent implements OnInit {
 
   getdata()
   {
-    this.myserv.getAllProducts(this.page).subscribe((response:any)=>{
+    this.myservice.getAllProducts(this.page).subscribe((response:any)=>{
       this.products = response.data;
       this.total = response.total;
     })
@@ -85,6 +90,13 @@ export class HomeComponent implements OnInit {
 
 
 
+  }
+  onSortDirection() {
+    if (this.SortDirection === 'desc') {
+      this.SortDirection = 'asc';
+    } else {
+      this.SortDirection = 'desc';
+    }
   }
 
 

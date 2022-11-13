@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
   selector: 'app-product-item',
@@ -9,8 +10,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ProductItemComponent implements OnInit {
   
   imgsrc= 'http://localhost:8000/storage/images';
+  cartNum:number=0;
 
-  constructor() { }
+  constructor(private myservice:ServicesService) { }
    quantity:number=1;
    @Input() product:any={};
    @Output() item=new EventEmitter()
@@ -21,6 +23,8 @@ export class ProductItemComponent implements OnInit {
   plus()
   {
     this.quantity++;
+    console.log(this.quantity);
+    
   }
   minus()
   {
@@ -29,11 +33,20 @@ export class ProductItemComponent implements OnInit {
     {
       this.quantity =1;
     }
+    console.log(this.quantity);
+    
   }
   Addtocart()
   {
     this.product.quanity=this.quantity;
     this.item.emit(this.product);
+    this.CartItemFun();
   }
-
+  CartItemFun(){
+      var CartValue = JSON.parse(localStorage.getItem('cart')) ;
+      this.cartNum = CartValue.length;
+      this.myservice.cartSubject.next(this.cartNum);
+     console.log(this.cartNum);
+  }
+ 
 }

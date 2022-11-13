@@ -19,7 +19,9 @@ class UserController extends Controller
         $newUser = User::create([
             'name' => request()->name,
             'email' => request()->email,
-            'password' => /*Hash::make(*/ request()->password,
+            'password' =>  request()->password,
+            'phone' =>  request()->phone,
+            'address' =>  request()->address,
         ]);
         return $newUser;
 
@@ -33,14 +35,7 @@ class UserController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        // if (! $user || ! Hash::check($request->password, $user->password)) {
-        //     return response()->json ([
-        //         'content' => 'The provided credentials are incorrect.',
-        //     ],404);
-        // }
-        // else{
-
-            if($request->email == 'admin@gmail.com' && /*Hash::check*/ $request->password == '123456789'){
+            if($request->email == 'admin@gmail.com' &&  $request->password == '123456789'){
                 $userType = 'admin';
                 return response()->json
                 (['token' => $user->createToken($request->email)->plainTextToken,
@@ -54,9 +49,6 @@ class UserController extends Controller
            'data'=> $user,
             'userType' => $userType,
            ]);
-
-
-        // }
 
     }
     public function logout(Request $request){

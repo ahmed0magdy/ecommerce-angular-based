@@ -12,17 +12,17 @@ export class CartComponent implements OnInit {
   productsInCart:any[]=[]
   total:any=0;
   imgsrc= 'http://localhost:8000/storage/images';
-
-  constructor(private myserv:ServicesService,private _route:Router) { }
+  LoggedInAdmin: any;
+  cartNum:any=0;
+  constructor(private myservice:ServicesService,private _route:Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("token")){
-      // alert("welcome "+sessionStorage.getItem("userEmail"));
-    }
-    else{
-      alert("please logged in ....");
-      window.location.href = "/login";
-    }
+  
+    this.LoggedInAdmin = localStorage.getItem("userType")
+     if(this.LoggedInAdmin != 'user'){
+         window.location.href = '/admin';
+     
+     }
 
 
     this.listItemstocart()
@@ -62,27 +62,25 @@ export class CartComponent implements OnInit {
     {
       this.productsInCart[ind].quanity =1;
     }
+   
     this.getTotal()
-    localStorage.setItem("cart",JSON.stringify(this.productsInCart))
-
+   
 
   }
   plus(ind:any)
   {
     this.productsInCart[ind].quanity++;
     this.getTotal()
-    localStorage.setItem("cart",JSON.stringify(this.productsInCart))
-
-
+    localStorage.setItem("cart",JSON.stringify(this.productsInCart));
   }
 
   deleteItem(index:any)
   {
     this.productsInCart.splice(index,1);
     this.getTotal()
-
+  
     localStorage.setItem("cart",JSON.stringify(this.productsInCart))
-
+    this.CartItemFun();
   }
 
   clearCart()
@@ -90,6 +88,9 @@ export class CartComponent implements OnInit {
     this.productsInCart=[];
     this.getTotal()
     localStorage.setItem("cart",JSON.stringify(this.productsInCart))
+    this.cartNum=0;
+    this.myservice.cartSubject.next(this.cartNum);
+    
 
   }
 
@@ -112,14 +113,14 @@ export class CartComponent implements OnInit {
          order:order,
         finaltotal:this.total
       }
-      localStorage.setItem("checkout",JSON.stringify(finalData));
+      // localStorage.setItem("checkout",JSON.stringify(finalData));
         // insert into tables
-        this.myserv.insertOrder(finalData).subscribe(
+        this.myservice.insertOrder(finalData).subscribe(
           (data:any)=>{
             
             //  console.log('hello data  '+data)
-             localStorage.clear();
-              window.location.href="/profiles";
+              localStorage.removeItem('cart');
+              window.location.href="/checkout";
               
           }
          );
@@ -127,4 +128,13 @@ export class CartComponent implements OnInit {
     }
    
   }
+  
+  CartItemFun(){
+    
+    var CartValue = JSON.parse(localStorage.getItem('cart')) ;
+    this.cartNum = CartValue.length;
+    this.myservice.cartSubject.next(this.cartNum);
+  //  console.log(this.cartNum);
+}
+  
 }

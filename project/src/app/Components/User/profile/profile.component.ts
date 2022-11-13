@@ -8,15 +8,21 @@ import { ServicesService } from '../../Admin/Services/services.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  LoggedInAdmin: any;
+  
   constructor(private myservice:ServicesService,activatedroute:ActivatedRoute) { }
   profile:any;
   id = localStorage.getItem('UserId') ;
   orders:any[]=[];
   ngOnInit(): void {
+    this.LoggedInAdmin = localStorage.getItem("userType")
+    if(this.LoggedInAdmin != 'user'){
+        window.location.href = '/admin';
+    }
     this.myservice.getByProfileId(this.id).subscribe((data)=>{
       this.profile = data;
      // console.log(data);
+    
     })
 
   }

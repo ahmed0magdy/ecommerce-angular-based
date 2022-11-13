@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -89,5 +90,6 @@ UpdateProfile(updatePro:any,id:any){
 DeleteOrd(id:number){
   return this.myClient.delete(`${this.profile}/${id}`)
 }
+cartSubject = new Subject<any>();
 
 }

@@ -13,7 +13,12 @@ isLoggedIn: any;
 LoggedInAdmin:any;
 flag = false;
 name:any;
-  constructor(private _route:Router, public myService: ServicesService ) {   }
+cartItem:number =0;
+  constructor(private _route:Router, public myService: ServicesService ) { 
+      this.myService.cartSubject.subscribe((data)=>{
+        this.cartItem = data;
+      })
+    }
 
   ngOnInit(): void {
     this.LoggedInAdmin = localStorage.getItem("userType")
@@ -25,6 +30,7 @@ name:any;
     if(!this.LoggedInAdmin){
         window.location.href = '/';
     }
+    this.CartItemFun();
   }
 
   logout(){
@@ -37,37 +43,14 @@ name:any;
     window.location.href= "/login"
   } 
 
-    //     // window.location.href = "/"; 
-
-
-
-
-
-    // var token = localStorage.getItem('token');
-  //  let token = localStorage.getItem(data['token']);
-   
-  //   const httpOptions ={
-  //     Headers : new HttpHeaders({
-  //       'Authorization': 'token'
-  //     })
-  //   }
-  //  this.myService.userLogout(httpOptions).subscribe({
-  //   next(data){
-  //     var token = localStorage.getItem('token');
-  //     console.log(data);
-  //     console.log(token);
-  //     localStorage.removeItem("token");
-  //     localStorage.removeItem("UserId");
-      
-  //     // window.location.href = "/"; 
-  //   },
-  //   error(err){
-  //     alert("data not deleted");
-  //     console.log(err);
-  //   }
-    
-  //  }) 
-  // }
-
+  CartItemFun(){
+    if(localStorage.getItem('cart') != null){
+      var CartCount = JSON.parse(localStorage.getItem('cart')) ;
+      console.log(CartCount);
+      this.cartItem = CartCount.length;
+    }
+  }
 }
+
+ 
 
